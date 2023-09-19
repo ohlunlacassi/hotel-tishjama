@@ -5,8 +5,8 @@ const { Schema } = mongoose;
 const serviceSchema = new Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
-  date: { type: date, required: true },
-  time: { type: date, required: true },
+  date: { type: Date, required: true },
+  time: { type: Date, required: true },
   price: { type: Number, required: true },
   image: { type: String, required: true },
 });
