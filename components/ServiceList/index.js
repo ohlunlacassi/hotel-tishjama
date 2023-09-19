@@ -13,7 +13,9 @@ export default function ServiceList() {
     return (
       <>
         <h2>Services</h2>
-        <p>Our apologies, but we couldn't retrieve the list of our services.</p>
+        <p>
+          Our apologies, but we could not retrieve the list of our services.
+        </p>
         <p>Please try again later.</p>
       </>
     );
