@@ -24,7 +24,15 @@ export default function ServiceList() {
       <h2>Services</h2>
       <ul>
         {data.map((service) => (
-          <li key={service._id}>{service.name}</li>
+          <li key={service._id}>
+            <Image
+              src={service.image}
+              width={100}
+              height={100}
+              alt="picture of the service"
+            />
+            {service.name}
+          </li>
         ))}
       </ul>
     </>
