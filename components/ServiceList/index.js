@@ -2,14 +2,13 @@ import useSWR from "swr";
 import Image from "next/image";
 
 export default function ServiceList() {
-  const { data, isLoading } = useSWR("/api/services");
+  const { data, isLoading, error } = useSWR("/api/services");
 
   if (isLoading) {
     return <h2>Loading...</h2>;
   }
-  console.log(data);
 
-  if (!data) {
+  if (error) {
     return (
       <>
         <h2>Services</h2>
