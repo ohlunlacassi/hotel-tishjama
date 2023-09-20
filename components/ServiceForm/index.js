@@ -74,11 +74,7 @@ export default function ServiceForm({ onSubmit, formName, defaultData }) {
           ></input>
           <span> EUR</span>
         </p>
-        <div>
-          <Link href="/">
-            <p>cancel</p>
-          </Link>
-        </div>
+
         <button type="submit">{defaultData ? "Update service" : "add"}</button>
         <div></div>
       </form>
