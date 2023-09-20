@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import useSWR from "swr";
 
 export default function ServiceCard() {
   const router = useRouter();
@@ -20,7 +21,7 @@ export default function ServiceCard() {
       <h2>Service</h2>
       <article>
         <Image
-          src={service.image}
+          src={data.image}
           width={100}
           height={100}
           alt="picture of the service"
