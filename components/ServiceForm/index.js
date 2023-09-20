@@ -1,6 +1,13 @@
 import Link from "next/link";
 
 export default function ServiceForm() {
+  function handleAdd(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    onSubmit(data);
+  }
+
   return (
     <>
       <h2>Add Service</h2>
@@ -45,6 +52,8 @@ export default function ServiceForm() {
             <p>cancel</p>
           </Link>
         </div>
+        <button type="submit">add</button>
+        <div></div>
       </form>
     </>
   );
