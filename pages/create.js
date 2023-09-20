@@ -20,7 +20,7 @@ export default function AddServicePage() {
 
   return (
     <>
-      <ServiceForm onSubmit={onSubmit} />
+      <ServiceForm />
       <div>
         <Link href="/">
           <p>cancel</p>
