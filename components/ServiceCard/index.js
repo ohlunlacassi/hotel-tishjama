@@ -28,9 +28,9 @@ export default function ServiceCard() {
         />
         <h3>{data.name}</h3>
         <p>{data.description}</p>
-        <p>{data.date}</p>
-        <p>{data.time}</p>
-        <p>{data.price} €</p>
+        <p>Date: {data.date}</p>
+        <p>Time: {data.time}</p>
+        <p>Price: {data.price} €</p>
       </article>
       <Link href="/">← back</Link>
     </>
