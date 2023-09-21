@@ -30,7 +30,7 @@ export default function ServiceForm({ onSubmit, formName, service = {} }) {
             name="image"
             type="text"
             defaultValue={service.image}
-            //  required
+            required
           ></input>
         </p>
         <p>

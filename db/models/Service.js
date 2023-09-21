@@ -8,7 +8,7 @@ const serviceSchema = new Schema({
   date: { type: Date, required: true },
   time: { type: String, required: true },
   price: { type: Number, required: true },
-  image: { type: String, required: false },
+  image: { type: String, required: true },
 });
 
 const Service =
