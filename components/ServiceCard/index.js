@@ -6,14 +6,18 @@ import useSWR from "swr";
 export default function ServiceCard() {
   const router = useRouter();
   const { id } = router.query;
-  const { data, isLoading, error } = useSWR(`/api/services/${id}`);
+  const { data: services, isLoading, error } = useSWR(`/api/services/${id}`);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
   }
 
   if (error) {
-    return;
+    return (
+      <h2>
+        There was an error fetching the service details. Please try again.
+      </h2>
+    );
   }
 
   return (
@@ -21,16 +25,21 @@ export default function ServiceCard() {
       <h2>Service</h2>
       <article>
         <Image
-          src={data.image}
+          src={services.image}
           width={100}
           height={100}
           alt="picture of the service"
         />
-        <h3>{data.name}</h3>
-        <p>{data.description}</p>
-        <p>Date: {data.date}</p>
-        <p>Time: {data.time}</p>
-        <p>Price: {data.price} €</p>
+        <h3>{services.name}</h3>
+        <p>{services.description}</p>
+        <dl>
+          <dt>Date:</dt>
+          <dd>{services.date}</dd>
+          <dt>Time:</dt>
+          <dd>{services.time}</dd>
+          <dt>Price:</dt>
+          <dd>{services.price} €</dd>
+        </dl>
       </article>
       <Link href="/">← back</Link>
     </>
