@@ -1,10 +1,11 @@
 import Link from "next/link";
 
-export default function ServiceForm({ onSubmit, formName, defaultData }) {
+export default function ServiceForm({ onSubmit, formName, service = {} }) {
   function handleAdd(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
+    console.log(data);
     onSubmit(data);
   }
 
@@ -13,70 +14,69 @@ export default function ServiceForm({ onSubmit, formName, defaultData }) {
       <h2>Add Service</h2>
       <form onSubmit={handleAdd} aria-labelledby={formName}>
         <p>
-          <label for="seviceName">Servie Name: </label>
+          <label htmlFor="name">Servie Name: </label>
           <input
-            id="serviceName"
-            name="serviceName"
+            id="name"
+            name="name"
             type="text"
-            defaultValue={defaultData?.serviceName}
+            defaultValue={service.name}
             required
           ></input>
         </p>
         <p>
-          <label for="image">Image: </label>
+          <label htmlFor="image">Image: </label>
           <input
             id="image"
             name="image"
             type="text"
-            defaultValue={defaultData?.image}
-            required
+            defaultValue={service.image}
+            //  required
           ></input>
         </p>
         <p>
-          <label for="description">Description: </label>
+          <label htmlFor="description">Description: </label>
           <textarea
             id="description"
-            name="text"
+            name="description"
             cols="20"
             rows="4"
-            defaultValue={defaultData?.description}
+            defaultValue={service.description}
             required
           ></textarea>
         </p>
         <p>
-          <label for="date">Date: </label>
+          <label htmlFor="date">Date: </label>
           <input
             id="date"
             name="date"
             type="date"
-            defaultValue={defaultData?.date}
+            defaultValue={service.date}
             required
           ></input>
         </p>
         <p>
-          <label for="time">Time: </label>
+          <label htmlFor="time">Time: </label>
           <input
             id="time"
             name="time"
             type="time"
-            defaultValue={defaultData?.time}
+            defaultValue={service.time}
             required
           ></input>
         </p>
         <p>
-          <label for="price">Price: </label>
+          <label htmlFor="price">Price: </label>
           <input
             id="price"
             name="price"
             type="number"
-            defaultValue={defaultData?.price}
+            defaultValue={service.price}
             required
           ></input>
           <span> EUR</span>
         </p>
 
-        <button type="submit">{defaultData ? "Update service" : "add"}</button>
-        <div></div>
+        <button type="submit">{service.name ? "Update service" : "add"}</button>
       </form>
     </>
   );
