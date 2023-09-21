@@ -27,6 +27,7 @@ export default function ServiceList() {
       <div>
         <Link href="/create">+ add service</Link>
       </div>
+
       <ul>
         {data.map((service) => (
           <li key={service._id}>

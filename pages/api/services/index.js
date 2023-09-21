@@ -13,7 +13,9 @@ export default async function handler(request, response) {
       const serviceData = request.body;
       const service = new Service(serviceData);
       await service.save();
-      return response.status(201).json({ status: "Service created." });
+      return response
+        .status(201)
+        .json({ message: "Service added successfully" });
     } catch (error) {
       console.error(error);
       return response.status(400).json({ error: error.message });

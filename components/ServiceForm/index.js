@@ -76,7 +76,7 @@ export default function ServiceForm({ onSubmit, formName, service = {} }) {
           <span> EUR</span>
         </p>
 
-        <button type="submit">{service.name ? "Update service" : "add"}</button>
+        <button type="submit">{service.name ? "update service" : "add"}</button>
       </form>
     </>
   );
