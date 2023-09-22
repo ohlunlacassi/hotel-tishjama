@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import useSWR from "swr";
 import { deleteService } from "../../lib/api";
-import { mutate } from "swr";
 
 export default function ServiceCard() {
   const router = useRouter();
@@ -26,7 +25,6 @@ export default function ServiceCard() {
       return;
     }
     await deleteService(id);
-    mutate("api/services");
     router.push("/");
   }
   return (
