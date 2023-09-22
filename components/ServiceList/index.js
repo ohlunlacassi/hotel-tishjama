@@ -21,6 +21,15 @@ export default function ServiceList() {
     );
   }
 
+  if (services.length === 0) {
+    return (
+      <>
+        <h2>Services</h2>
+        <p>There are currently no services available.</p>
+        <p>Please add a service!</p>
+      </>
+    );
+  }
   return (
     <>
       <h2>Services</h2>
