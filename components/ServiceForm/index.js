@@ -11,7 +11,7 @@ export default function ServiceForm({ onSubmit, formName }) {
       <h2>Add Service</h2>
       <form onSubmit={handleAdd} aria-labelledby={formName}>
         <p>
-          <label htmlFor="name">Servie Name: </label>
+          <label htmlFor="name">service Name: </label>
           <input id="name" name="name" type="text" required></input>
         </p>
         <p>
