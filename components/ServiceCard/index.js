@@ -2,6 +2,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import useSWR from "swr";
+import { deleteService } from "../../lib/api";
+import { mutate } from "swr";
 
 export default function ServiceCard() {
   const router = useRouter();
@@ -19,7 +21,14 @@ export default function ServiceCard() {
       </h2>
     );
   }
-
+  async function onDelete(id) {
+    if (!confirm("Are you sure you want to delete this service?")) {
+      return;
+    }
+    await deleteService(id);
+    mutate("api/services");
+    router.push("/");
+  }
   return (
     <>
       <h2>Service</h2>
@@ -41,6 +50,9 @@ export default function ServiceCard() {
           <dd>{services.price} €</dd>
         </dl>
       </article>
+      <button type="danger" onClick={() => onDelete(services._id)}>
+        delete
+      </button>
       <Link href="/">← back</Link>
     </>
   );
