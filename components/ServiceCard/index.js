@@ -50,10 +50,10 @@ export default function ServiceCard() {
           <dd>{services.price} €</dd>
         </dl>
       </article>
-      <button type="danger" onClick={() => onDelete(services._id)}>
-        delete
-      </button>
       <Link href="/">← back</Link>
+      <button type="danger" onClick={() => onDelete(services._id)}>
+        ❌ delete
+      </button>
     </>
   );
 }
