@@ -1,4 +1,4 @@
-export default function ServiceForm({ onSubmit, formName, service = {} }) {
+export default function ServiceForm({ onSubmit, formName }) {
   function handleAdd(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -12,23 +12,11 @@ export default function ServiceForm({ onSubmit, formName, service = {} }) {
       <form onSubmit={handleAdd} aria-labelledby={formName}>
         <p>
           <label htmlFor="name">Servie Name: </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            defaultValue={service.name}
-            required
-          ></input>
+          <input id="name" name="name" type="text" required></input>
         </p>
         <p>
           <label htmlFor="image">Image: </label>
-          <input
-            id="image"
-            name="image"
-            type="text"
-            defaultValue={service.image}
-            required
-          ></input>
+          <input id="image" name="image" type="text" required></input>
         </p>
         <p>
           <label htmlFor="description">Description: </label>
@@ -37,43 +25,24 @@ export default function ServiceForm({ onSubmit, formName, service = {} }) {
             name="description"
             cols="20"
             rows="4"
-            defaultValue={service.description}
             required
           ></textarea>
         </p>
         <p>
           <label htmlFor="date">Date: </label>
-          <input
-            id="date"
-            name="date"
-            type="date"
-            defaultValue={service.date}
-            required
-          ></input>
+          <input id="date" name="date" type="date" required></input>
         </p>
         <p>
           <label htmlFor="time">Time: </label>
-          <input
-            id="time"
-            name="time"
-            type="time"
-            defaultValue={service.time}
-            required
-          ></input>
+          <input id="time" name="time" type="time" required></input>
         </p>
         <p>
           <label htmlFor="price">Price: </label>
-          <input
-            id="price"
-            name="price"
-            type="number"
-            defaultValue={service.price}
-            required
-          ></input>
+          <input id="price" name="price" type="number" required></input>
           <span> EUR</span>
         </p>
 
-        <button type="submit">{service.name ? "update service" : "add"}</button>
+        <button type="submit">add</button>
       </form>
     </>
   );
