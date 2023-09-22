@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+
 export default function ServiceList() {
   const { data: services, isLoading, error } = useSWR("/api/services");
 
