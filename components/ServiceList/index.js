@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-
 export default function ServiceList() {
   const { data: services, isLoading, error } = useSWR("/api/services");
 
@@ -26,9 +25,7 @@ export default function ServiceList() {
   return (
     <>
       <h2>Services</h2>
-      <div>
-        <Link href="/create">+ add service</Link>
-      </div>
+      <Link href="/create">+ add service</Link>
       <ul>
         {services.map((service) => (
           <li key={service._id}>
