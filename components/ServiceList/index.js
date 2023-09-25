@@ -37,15 +37,17 @@ export default function ServiceList() {
       <Link href="/create">+ add service</Link>
       <ul>
         {services.map((service) => (
-          <li key={service._id}>
-            <Image
-              src={service.image}
-              width={100}
-              height={100}
-              alt={`picture of the ${service.name}`}
-            />
-            {service.name}
-          </li>
+          <Link key={service._id} href={`/${service._id}`}>
+            <li>
+              <Image
+                src={service.image}
+                width={100}
+                height={100}
+                alt={`picture of the ${service.name}`}
+              />
+              {service.name}
+            </li>
+          </Link>
         ))}
       </ul>
     </>
