@@ -8,7 +8,7 @@ export default function AddServicePage() {
 
   async function onSubmit(data) {
     await addService({ ...data });
-    router.push("/");
+    router.push("/SPD");
   }
 
   return (
