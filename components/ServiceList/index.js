@@ -33,11 +33,9 @@ export default function ServiceList() {
   }
   return (
     <>
-      <h2>Services</h2>
-      <Link href="/SPD/services/create">+ add service</Link>
       <ul>
         {services.map((service) => (
-          <Link key={service._id} href={`/${service._id}`}>
+          <Link key={service._id} href={`${service._id}`}>
             <li>
               <Image
                 src={service.image}
