@@ -1,3 +1,6 @@
+import EditService from "@/pages/SPD/services/[id]/edit";
+import useSWR from "swr";
+
 export default function ServiceForm({ onSubmit, service = {} }) {
   function handleAdd(event) {
     event.preventDefault();
@@ -6,10 +9,19 @@ export default function ServiceForm({ onSubmit, service = {} }) {
     onSubmit(data);
   }
 
+  async function handleEditService(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    onSubmit(data);
+  }
+
   return (
     <>
-      <h2>Add Service</h2>
-      <form onSubmit={handleAdd} aria-label="ServiceForm">
+      <form
+        onSubmit={service.name ? handleEditService : handleAdd}
+        aria-label="ServiceForm"
+      >
         <label htmlFor="name">service Name: </label>
         <input
           id="name"

@@ -36,9 +36,8 @@ export default function ServiceList({ context }) {
   return (
     <ul>
       {services.map((service) => (
-        <li>
+        <li key={service._id}>
           <Link
-            key={service._id}
             href={context === "SPD" ? `/SPD/${service._id}` : `/${service._id}`}
           >
             <Image

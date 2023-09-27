@@ -42,7 +42,6 @@ export default function ServiceCard({ id }) {
           <dd>{service.price} €</dd>
         </dl>
       </article>
-      <Link href="/">← back</Link>
     </>
   );
 }

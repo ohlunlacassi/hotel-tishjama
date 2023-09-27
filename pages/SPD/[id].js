@@ -12,14 +12,15 @@ export default function ServiceDetailsPage() {
       return;
     }
     await deleteService(id);
-    router.push("/");
+    router.push("/SPD");
   }
 
   return (
     <>
       <ServiceCard id={id} />
+      <Link href="/SPD">← back</Link>
       <Link href={`/SPD/services/${id}/edit`}>✏️ Edit</Link>
-      <button type="danger" onClick={() => onDelete(services._id)}>
+      <button type="danger" onClick={() => onDelete(id)}>
         ❌ delete
       </button>
     </>

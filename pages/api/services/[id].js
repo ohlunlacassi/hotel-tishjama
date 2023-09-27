@@ -13,7 +13,7 @@ export default async function handler(request, response) {
   }
   if (request.method === "PUT") {
     try {
-      const service = await Service.findOneAndUpdate(
+      const service = await Service.findByIdAndUpdate(
         { _id: request.query.id },
         request.body,
         { new: true }
