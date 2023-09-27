@@ -6,7 +6,7 @@ export default function SPDHomePage() {
     <>
       <h2>Services</h2>
       <Link href="/SPD/services/create">+ add service</Link>
-      <ServiceList />;
+      <ServiceList context="SPD" />;
     </>
   );
 }

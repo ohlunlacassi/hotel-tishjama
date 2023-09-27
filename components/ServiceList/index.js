@@ -2,9 +2,11 @@ import useSWR from "swr";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useRouter } from "next/router";
 
-export default function ServiceList() {
+export default function ServiceList({ context }) {
   const { data: services, isLoading, error } = useSWR("/api/services");
+  const router = useRouter();
 
   if (isLoading) {
     return <h2>Loading...</h2>;
@@ -32,22 +34,23 @@ export default function ServiceList() {
     );
   }
   return (
-    <>
-      <ul>
-        {services.map((service) => (
-          <Link key={service._id} href={`${service._id}`}>
-            <li>
-              <Image
-                src={service.image}
-                width={100}
-                height={100}
-                alt={`picture of the ${service.name}`}
-              />
-              {service.name}
-            </li>
+    <ul>
+      {services.map((service) => (
+        <li>
+          <Link
+            key={service._id}
+            href={context === "SPD" ? `/SPD/${service._id}` : `/${service._id}`}
+          >
+            <Image
+              src={service.image}
+              width={100}
+              height={100}
+              alt={`picture of the ${service.name}`}
+            />
+            {service.name}
           </Link>
-        ))}
-      </ul>
-    </>
+        </li>
+      ))}
+    </ul>
   );
 }
