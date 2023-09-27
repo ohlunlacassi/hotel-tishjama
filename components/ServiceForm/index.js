@@ -16,6 +16,8 @@ export default function ServiceForm({ onSubmit, service = {} }) {
     onSubmit(data);
   }
 
+  const dateFormat = new Date(service.date).toISOString().split("T")[0];
+
   return (
     <>
       <form
@@ -37,7 +39,6 @@ export default function ServiceForm({ onSubmit, service = {} }) {
           name="image"
           type="text"
           defaultValue={service.image}
-          required
         />
 
         <label htmlFor="description">Description: </label>
@@ -55,7 +56,7 @@ export default function ServiceForm({ onSubmit, service = {} }) {
           id="date"
           name="date"
           type="date"
-          defaultValue={service.date}
+          defaultValue={service.date ? dateFormat : " "}
           required
         />
 

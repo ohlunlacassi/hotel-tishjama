@@ -14,9 +14,9 @@ export default function EditService() {
   } = useSWR(id ? `/api/services/${id}` : null);
 
   async function onSubmit(data) {
-    await editService({ ...data, id });
-    mutate(`/api/services`);
-    mutate(`/api/services/${id}`);
+    await editService(id, data);
+    // mutate(`/api/services`);
+    // mutate(`/api/services/${id}`);
     router.push("/SPD");
   }
 
