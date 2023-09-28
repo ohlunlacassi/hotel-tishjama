@@ -5,7 +5,7 @@ export default function HomePage() {
   return (
     <>
       <p>
-        Welcome! On this page, you will find a list of Hotel Tishjama's
+        Welcome! On this page, you will find a list of Hotel Tishjama&#x27;s
         bookable, luxury services! Enjoy your stay.
       </p>
       <Link href="/SPD">Service Provider Dashboard</Link>
