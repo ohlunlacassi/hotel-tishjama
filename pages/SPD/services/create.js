@@ -8,14 +8,15 @@ export default function AddServicePage() {
 
   async function onSubmit(data) {
     await addService({ ...data });
-    router.push("/");
+    router.push("/SPD");
   }
 
   return (
     <>
+      <h2>Add Service</h2>
       <ServiceForm onSubmit={onSubmit} />
 
-      <Link href="/">cancel</Link>
+      <Link href="/SPD">cancel</Link>
     </>
   );
 }

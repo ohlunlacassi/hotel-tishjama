@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export default function ServiceList() {
+export default function ServiceList({ context }) {
   const { data: services, isLoading, error } = useSWR("/api/services");
 
   if (isLoading) {
@@ -32,24 +32,22 @@ export default function ServiceList() {
     );
   }
   return (
-    <>
-      <h2>Services</h2>
-      <Link href="/create">+ add service</Link>
-      <ul>
-        {services.map((service) => (
-          <Link key={service._id} href={`/${service._id}`}>
-            <li>
-              <Image
-                src={service.image}
-                width={100}
-                height={100}
-                alt={`picture of the ${service.name}`}
-              />
-              {service.name}
-            </li>
+    <ul>
+      {services.map((service) => (
+        <li key={service._id}>
+          <Link
+            href={context === "SPD" ? `/SPD/${service._id}` : `/${service._id}`}
+          >
+            <Image
+              src={service.image}
+              width={100}
+              height={100}
+              alt={`picture of the ${service.name}`}
+            />
+            {service.name}
           </Link>
-        ))}
-      </ul>
-    </>
+        </li>
+      ))}
+    </ul>
   );
 }
