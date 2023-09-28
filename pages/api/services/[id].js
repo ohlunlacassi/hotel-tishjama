@@ -3,7 +3,7 @@ import Service from "../../../db/models/Service";
 
 export default async function handler(request, response) {
   await dbConnect();
-  // const { id } = request.query;
+
   if (request.method === "GET") {
     const service = await Service.findById(request.query.id);
     if (!service) {

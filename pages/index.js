@@ -4,7 +4,7 @@ export default function HomePage() {
   return (
     <>
       <h2>Services</h2>
-      <ServiceList />;
+      <ServiceList />
     </>
   );
 }

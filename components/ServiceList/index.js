@@ -2,11 +2,9 @@ import useSWR from "swr";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useRouter } from "next/router";
 
 export default function ServiceList({ context }) {
   const { data: services, isLoading, error } = useSWR("/api/services");
-  const router = useRouter();
 
   if (isLoading) {
     return <h2>Loading...</h2>;

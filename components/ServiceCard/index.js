@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import useSWR from "swr";
 
 export default function ServiceCard({ id }) {
@@ -29,7 +28,7 @@ export default function ServiceCard({ id }) {
           src={service.image}
           width={100}
           height={100}
-          alt="picture of the service"
+          alt={`picture of the ${service.name}`}
         />
         <h3>{service.name}</h3>
         <p>{service.description}</p>

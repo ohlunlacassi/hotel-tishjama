@@ -7,17 +7,13 @@ import Link from "next/link";
 export default function EditService() {
   const router = useRouter();
   const { id } = router.query;
-  const {
-    data: service,
-    isLoading,
-    mutate,
-  } = useSWR(id ? `/api/services/${id}` : null);
+  const { data: service, isLoading } = useSWR(
+    id ? `/api/services/${id}` : null
+  );
 
   async function onSubmit(data) {
     await editService(id, data);
-    // mutate(`/api/services`);
-    // mutate(`/api/services/${id}`);
-    router.push("/SPD");
+    router.push(`/SPD/${id}`);
   }
 
   if (!service || isLoading) {
