@@ -7,6 +7,7 @@ export default function ServiceDetailsPage() {
   const { id } = router.query;
   return (
     <>
+      <p>Here are the details of the luxury service you selected.</p>
       <ServiceCard id={id} />
       <Link href="/">← back</Link>
     </>
