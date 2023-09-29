@@ -1,5 +1,6 @@
 import Image from "next/image";
 import useSWR from "swr";
+import H2 from "../Layout/H2";
 
 export default function ServiceCard({ id }) {
   const {
@@ -9,20 +10,20 @@ export default function ServiceCard({ id }) {
   } = useSWR(id ? `/api/services/${id}` : null);
 
   if (isLoading || !service) {
-    return <h2>Loading...</h2>;
+    return <H2>Loading...</H2>;
   }
 
   if (error) {
     return (
-      <h2>
+      <H2>
         There was an error fetching the service details. Please try again.
-      </h2>
+      </H2>
     );
   }
 
   return (
     <>
-      <h2>Service</h2>
+      <H2>Service</H2>
       <article>
         <Image
           src={service.image}
