@@ -1,10 +1,12 @@
 import useSWR from "swr";
 import Image from "next/image";
-import Link from "next/link";
+import StyledLink from "../Layout/StyledLink";
 import React from "react";
 import Paragraph from "../Layout/Paragraph";
 import H2 from "../Layout/H2";
 import UnorderedList from "../Layout/UnorderedList";
+import ListItem from "../Layout/ListItem";
+import TextSpan from "../Layout/TextSpan";
 
 export default function ServiceList({ context }) {
   const { data: services, isLoading, error } = useSWR("/api/services");
@@ -34,19 +36,21 @@ export default function ServiceList({ context }) {
   return (
     <UnorderedList>
       {services.map((service) => (
-        <li key={service._id}>
-          <Link
+        <ListItem key={service._id}>
+          <StyledLink
             href={context === "SPD" ? `/SPD/${service._id}` : `/${service._id}`}
           >
-            <Image
-              src={service.image}
-              width={100}
-              height={100}
-              alt={`picture of the ${service.name}`}
-            />
-            {service.name}
-          </Link>
-        </li>
+            <TextSpan>
+              <Image
+                src={service.image}
+                width={100}
+                height={100}
+                alt={`picture of the ${service.name}`}
+              />
+            </TextSpan>
+            <TextSpan>{service.name}</TextSpan>
+          </StyledLink>
+        </ListItem>
       ))}
     </UnorderedList>
   );

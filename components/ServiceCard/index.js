@@ -1,6 +1,7 @@
 import Image from "next/image";
 import useSWR from "swr";
 import H2 from "../Layout/H2";
+import StyledCard from "../Layout/StyledCard";
 
 export default function ServiceCard({ id }) {
   const {
@@ -24,7 +25,7 @@ export default function ServiceCard({ id }) {
   return (
     <>
       <H2>Service</H2>
-      <article>
+      <StyledCard>
         <Image
           src={service.image}
           width={100}
@@ -33,15 +34,12 @@ export default function ServiceCard({ id }) {
         />
         <h3>{service.name}</h3>
         <p>{service.description}</p>
-        <dl>
-          <dt>Date:</dt>
-          <dd>{service.date}</dd>
-          <dt>Time:</dt>
-          <dd>{service.time}</dd>
-          <dt>Price:</dt>
-          <dd>{service.price} €</dd>
-        </dl>
-      </article>
+        <ul>
+          <li>Date: {service.date}</li>
+          <li>Time: {service.time}</li>
+          <li>Price: {service.price} EUR</li>
+        </ul>
+      </StyledCard>
     </>
   );
 }
