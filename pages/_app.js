@@ -1,5 +1,6 @@
 import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
+import Header from "@/components/Layout/Header";
 
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
@@ -8,7 +9,7 @@ export default function App({ Component, pageProps }) {
     <>
       <SWRConfig value={{ fetcher }}>
         <GlobalStyle />
-        <h1>Hotel Tishjama</h1>
+        <Header />
         <Component {...pageProps} />
       </SWRConfig>
     </>
