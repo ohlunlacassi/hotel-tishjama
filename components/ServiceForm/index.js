@@ -1,5 +1,6 @@
 import ActionButton from "../Layout/ActionButton";
 import FormContainer from "../Layout/Form/FormContainer";
+import FormItem from "../Layout/Form/FormItem";
 
 function formatDate(date) {
   if (date) {
@@ -18,27 +19,38 @@ export default function ServiceForm({ onSubmit, service = {} }) {
 
   return (
     <FormContainer onSubmit={handleSubmit} aria-label="ServiceForm">
-      <label htmlFor="name">Service Name: </label>
-      <input
-        id="name"
-        name="name"
-        type="text"
-        defaultValue={service.name}
-        required
-      />
+      <FormItem>
+        <label htmlFor="name">Service Name: </label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          defaultValue={service.name}
+          required
+        />
+      </FormItem>
 
-      <label htmlFor="image">Image: </label>
-      <input id="image" name="image" type="text" defaultValue={service.image} />
+      <FormItem>
+        <label htmlFor="image">Image: </label>
+        <input
+          id="image"
+          name="image"
+          type="text"
+          defaultValue={service.image}
+        />
+      </FormItem>
 
-      <label htmlFor="description">Description: </label>
-      <textarea
-        id="description"
-        name="description"
-        cols="20"
-        rows="4"
-        defaultValue={service.description}
-        required
-      ></textarea>
+      <FormItem>
+        <label htmlFor="description">Description: </label>
+        <textarea
+          id="description"
+          name="description"
+          cols="20"
+          rows="4"
+          defaultValue={service.description}
+          required
+        ></textarea>
+      </FormItem>
 
       <label htmlFor="date">
         Date:{" "}

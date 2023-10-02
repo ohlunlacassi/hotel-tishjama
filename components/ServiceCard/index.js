@@ -2,6 +2,7 @@ import StyledImage from "../Layout/StyledImage";
 import useSWR from "swr";
 import H2 from "../Layout/H2";
 import StyledCard from "../Layout/StyledCard";
+import Flex from "../Layout/Flex";
 
 export default function ServiceCard({ id }) {
   const {
@@ -26,13 +27,16 @@ export default function ServiceCard({ id }) {
     <>
       <H2>Service</H2>
       <StyledCard>
-        <StyledImage
-          src={service.image}
-          width={100}
-          height={100}
-          alt={`picture of the ${service.name}`}
-        />
-        <h3>{service.name}</h3>
+        <Flex>
+          <StyledImage
+            src={service.image}
+            width={100}
+            height={100}
+            alt={`picture of the ${service.name}`}
+          />
+          <h3>{service.name}</h3>
+        </Flex>
+
         <p>{service.description}</p>
         <ul>
           <li>Date: {new Date(service.date).toISOString().split("T")[0]}</li>

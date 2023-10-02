@@ -16,7 +16,7 @@ export default function AddServicePage() {
     <>
       <H2>Add Service</H2>
       <ServiceForm onSubmit={onSubmit} />
-
+      <br />
       <ActionLink href="/SPD">Cancel</ActionLink>
     </>
   );
