@@ -1,5 +1,4 @@
 import useSWR from "swr";
-import Image from "next/image";
 import StyledLink from "../Layout/StyledLink";
 import React from "react";
 import Paragraph from "../Layout/Paragraph";
@@ -7,6 +6,7 @@ import H2 from "../Layout/H2";
 import UnorderedList from "../Layout/UnorderedList";
 import ListItem from "../Layout/ListItem";
 import TextSpan from "../Layout/TextSpan";
+import StyledImage from "../Layout/StyledImage";
 
 export default function ServiceList({ context }) {
   const { data: services, isLoading, error } = useSWR("/api/services");
@@ -41,7 +41,7 @@ export default function ServiceList({ context }) {
             href={context === "SPD" ? `/SPD/${service._id}` : `/${service._id}`}
           >
             <TextSpan>
-              <Image
+              <StyledImage
                 src={service.image}
                 width={100}
                 height={100}

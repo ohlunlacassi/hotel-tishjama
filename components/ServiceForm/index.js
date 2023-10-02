@@ -1,3 +1,6 @@
+import ActionButton from "../Layout/ActionButton";
+import FormContainer from "../Layout/Form/FormContainer";
+
 function formatDate(date) {
   if (date) {
     return new Date(date).toISOString().split("T")[0];
@@ -14,8 +17,8 @@ export default function ServiceForm({ onSubmit, service = {} }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} aria-label="ServiceForm">
-      <label htmlFor="name">service Name: </label>
+    <FormContainer onSubmit={handleSubmit} aria-label="ServiceForm">
+      <label htmlFor="name">Service Name: </label>
       <input
         id="name"
         name="name"
@@ -37,35 +40,41 @@ export default function ServiceForm({ onSubmit, service = {} }) {
         required
       ></textarea>
 
-      <label htmlFor="date">Date: </label>
-      <input
-        id="date"
-        name="date"
-        type="date"
-        defaultValue={formatDate(service.date)}
-        required
-      />
+      <label htmlFor="date">
+        Date:{" "}
+        <input
+          id="date"
+          name="date"
+          type="date"
+          defaultValue={formatDate(service.date)}
+          required
+        />
+      </label>
 
-      <label htmlFor="time">Time: </label>
-      <input
-        id="time"
-        name="time"
-        type="time"
-        defaultValue={service.time}
-        required
-      />
+      <label htmlFor="time">
+        Time:{" "}
+        <input
+          id="time"
+          name="time"
+          type="time"
+          defaultValue={service.time}
+          required
+        />
+      </label>
 
-      <label htmlFor="price">Price: </label>
-      <input
-        id="price"
-        name="price"
-        type="number"
-        defaultValue={service.price}
-        required
-      />
-      <span> EUR</span>
+      <label htmlFor="price">
+        Price:{" "}
+        <input
+          id="price"
+          name="price"
+          type="number"
+          defaultValue={service.price}
+          required
+        />
+        <span> EUR</span>
+      </label>
 
-      <button type="submit">{service.name ? "Save" : "Add"}</button>
-    </form>
+      <ActionButton type="submit">{service.name ? "Save" : "Add"}</ActionButton>
+    </FormContainer>
   );
 }

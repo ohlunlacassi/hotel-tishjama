@@ -1,7 +1,7 @@
 import ServiceCard from "@/components/ServiceCard";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import Paragraph from "@/components/Layout/Paragraph";
+import ActionLink from "@/components/Layout/ActionLink";
 
 export default function ServiceDetailsPage() {
   const router = useRouter();
@@ -12,7 +12,8 @@ export default function ServiceDetailsPage() {
         Here are the details of the luxury service you selected.
       </Paragraph>
       <ServiceCard id={id} />
-      <Link href="/">← back</Link>
+      <br />
+      <ActionLink href="/">← back</ActionLink>
     </>
   );
 }

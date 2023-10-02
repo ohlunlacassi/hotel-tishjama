@@ -2,8 +2,8 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import { editService } from "@/lib/api";
 import ServiceForm from "@/components/ServiceForm";
-import Link from "next/link";
 import H2 from "@/components/Layout/H2";
+import ActionLink from "@/components/Layout/ActionLink";
 
 export default function EditService() {
   const router = useRouter();
@@ -25,7 +25,8 @@ export default function EditService() {
     <>
       <H2>Edit Service</H2>
       <ServiceForm service={service} onSubmit={onSubmit} />
-      <Link href="/SPD">cancel</Link>
+      <br />
+      <ActionLink href="/SPD">Cancel</ActionLink>
     </>
   );
 }

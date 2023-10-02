@@ -1,4 +1,4 @@
-import Image from "next/image";
+import StyledImage from "../Layout/StyledImage";
 import useSWR from "swr";
 import H2 from "../Layout/H2";
 import StyledCard from "../Layout/StyledCard";
@@ -26,7 +26,7 @@ export default function ServiceCard({ id }) {
     <>
       <H2>Service</H2>
       <StyledCard>
-        <Image
+        <StyledImage
           src={service.image}
           width={100}
           height={100}
@@ -35,7 +35,7 @@ export default function ServiceCard({ id }) {
         <h3>{service.name}</h3>
         <p>{service.description}</p>
         <ul>
-          <li>Date: {service.date}</li>
+          <li>Date: {new Date(service.date).toISOString().split("T")[0]}</li>
           <li>Time: {service.time}</li>
           <li>Price: {service.price} EUR</li>
         </ul>
