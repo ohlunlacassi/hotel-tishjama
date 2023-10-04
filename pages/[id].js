@@ -9,7 +9,7 @@ export default function ServiceDetailsPage() {
     <>
       <p>Here are the details of the luxury service you selected.</p>
       <ServiceCard id={id} />
-      <Link href="/">← back</Link>
+      <Link href="/">← Services</Link>
     </>
   );
 }
