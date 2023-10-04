@@ -4,9 +4,14 @@ import useSWR from "swr";
 export default function ServiceCard({ id }) {
   const {
     data: service,
+    setService,
     isLoading,
     error,
   } = useSWR(id ? `/api/services/${id}` : null);
+
+  const handleBooking = () => {
+    setService({ ...service, isBooked: true });
+  };
 
   if (isLoading || !service) {
     return <h2>Loading...</h2>;
@@ -40,6 +45,9 @@ export default function ServiceCard({ id }) {
           <dt>Price:</dt>
           <dd>{service.price} €</dd>
         </dl>
+        <button onClick={handleBooking} disabled={service.isBooked}>
+          {service.isBooked ? "Service Booked" : "Book this Service"}
+        </button>
       </article>
     </>
   );
