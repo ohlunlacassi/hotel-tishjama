@@ -9,6 +9,7 @@ const serviceSchema = new Schema({
   time: { type: String, required: true },
   price: { type: Number, required: true },
   image: { type: String, required: false },
+  isBooked: { type: Boolean, default: false },
 });
 
 const Service =
