@@ -1,3 +1,7 @@
+import ActionButton from "../Layout/ActionButton";
+import FormContainer from "../Layout/Form/FormContainer";
+import FormItem from "../Layout/Form/FormItem";
+
 function formatDate(date) {
   if (date) {
     return new Date(date).toISOString().split("T")[0];
@@ -14,58 +18,75 @@ export default function ServiceForm({ onSubmit, service = {} }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} aria-label="ServiceForm">
-      <label htmlFor="name">service Name: </label>
-      <input
-        id="name"
-        name="name"
-        type="text"
-        defaultValue={service.name}
-        required
-      />
+    <FormContainer onSubmit={handleSubmit} aria-label="ServiceForm">
+      <FormItem>
+        <label htmlFor="name">Service Name: </label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          defaultValue={service.name}
+          required
+        />
+      </FormItem>
 
-      <label htmlFor="image">Image: </label>
-      <input id="image" name="image" type="text" defaultValue={service.image} />
+      <FormItem>
+        <label htmlFor="image">Image: </label>
+        <input
+          id="image"
+          name="image"
+          type="text"
+          defaultValue={service.image}
+        />
+      </FormItem>
 
-      <label htmlFor="description">Description: </label>
-      <textarea
-        id="description"
-        name="description"
-        cols="20"
-        rows="4"
-        defaultValue={service.description}
-        required
-      ></textarea>
+      <FormItem>
+        <label htmlFor="description">Description: </label>
+        <textarea
+          id="description"
+          name="description"
+          cols="20"
+          rows="4"
+          defaultValue={service.description}
+          required
+        ></textarea>
+      </FormItem>
 
-      <label htmlFor="date">Date: </label>
-      <input
-        id="date"
-        name="date"
-        type="date"
-        defaultValue={formatDate(service.date)}
-        required
-      />
+      <label htmlFor="date">
+        Date:{" "}
+        <input
+          id="date"
+          name="date"
+          type="date"
+          defaultValue={formatDate(service.date)}
+          required
+        />
+      </label>
 
-      <label htmlFor="time">Time: </label>
-      <input
-        id="time"
-        name="time"
-        type="time"
-        defaultValue={service.time}
-        required
-      />
+      <label htmlFor="time">
+        Time:{" "}
+        <input
+          id="time"
+          name="time"
+          type="time"
+          defaultValue={service.time}
+          required
+        />
+      </label>
 
-      <label htmlFor="price">Price: </label>
-      <input
-        id="price"
-        name="price"
-        type="number"
-        defaultValue={service.price}
-        required
-      />
-      <span> EUR</span>
+      <label htmlFor="price">
+        Price:{" "}
+        <input
+          id="price"
+          name="price"
+          type="number"
+          defaultValue={service.price}
+          required
+        />
+        <span> EUR</span>
+      </label>
 
-      <button type="submit">{service.name ? "Save" : "Add"}</button>
-    </form>
+      <ActionButton type="submit">{service.name ? "Save" : "Add"}</ActionButton>
+    </FormContainer>
   );
 }
