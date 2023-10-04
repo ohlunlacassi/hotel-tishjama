@@ -9,8 +9,15 @@ export default function ServiceCard({ id }) {
     error,
   } = useSWR(id ? `/api/services/${id}` : null);
 
-  const handleBooking = () => {
-    setService({ ...service, isBooked: true });
+  const handleBooking = async () => {
+    if (!service.isBooked) {
+      fetch(`/services/${service._id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ isBooked: true }),
+        setService({ ...service, isBooked: true });
+      })
+    }
   };
 
   if (isLoading || !service) {
