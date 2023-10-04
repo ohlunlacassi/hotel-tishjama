@@ -20,7 +20,7 @@ export default function ServiceDetailsPage() {
     <>
       <ServiceCard id={id} />
       <br />
-      <ActionLink href="/SPD">← back</ActionLink>
+      <ActionLink href="/SPD">← Services</ActionLink>
       <ActionLink href={`/SPD/services/${id}/edit`}>✏️ Edit</ActionLink>
       <ActionButton type="danger" onClick={() => onDelete(id)}>
         ❌ delete

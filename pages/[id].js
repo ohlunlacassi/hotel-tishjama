@@ -13,7 +13,7 @@ export default function ServiceDetailsPage() {
       </Paragraph>
       <ServiceCard id={id} />
       <br />
-      <ActionLink href="/">← back</ActionLink>
+      <ActionLink href="/">← Services</ActionLink>
     </>
   );
 }

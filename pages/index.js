@@ -12,8 +12,8 @@ export default function HomePage() {
         <br />
         Enjoy your stay.
       </Paragraph>
-      <ActionLink href="/SPD">Service Provider Dashboard</ActionLink>
       <H2>Services</H2>
+      <ActionLink href="/SPD">Service Provider Dashboard</ActionLink>
       <ServiceList />
     </>
   );

@@ -5,9 +5,9 @@ import ActionLink from "@/components/Layout/ActionLink";
 export default function SPDHomePage() {
   return (
     <>
-      <ActionLink href="../">User Dashboard</ActionLink>
       <H2>Services</H2>
       <ActionLink href="/SPD/services/create">+ add service</ActionLink>
+      <ActionLink href="../">User Dashboard</ActionLink>
       <ServiceList context="SPD" />
     </>
   );
