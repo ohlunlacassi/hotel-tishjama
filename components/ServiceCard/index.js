@@ -11,12 +11,15 @@ export default function ServiceCard({ id }) {
 
   const handleBooking = async () => {
     if (!service.isBooked) {
-      fetch(`/services/${service._id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ isBooked: true }),
-        setService({ ...service, isBooked: true });
-      })
+      fetch(
+        `/services/${service._id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ isBooked: true }),
+        },
+        setService({ ...service, isBooked: true })
+      );
     }
   };
 
