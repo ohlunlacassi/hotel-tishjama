@@ -19,10 +19,10 @@ export default function MyBookingList({ context }) {
     );
   }
 
-  const bookedServices = services.filter((service) => service.isBooked);
+  const bookedServices = services?.filter((service) => service.isBooked);
   console.log("test:", bookedServices);
 
-  if (bookedServices.length === 0) {
+  if (!bookedServices || bookedServices.length === 0) {
     return (
       <>
         <h2>⭐️ My Bookings</h2>
