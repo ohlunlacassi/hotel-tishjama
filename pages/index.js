@@ -9,7 +9,7 @@ export default function HomePage() {
         bookable, luxury services! Enjoy your stay.
       </p>
       <Link href="/SPD">Service Provider Dashboard</Link>
-      <Link href="/MyBookings">⭐️ My Bookings</Link>
+      <Link href="/MyBookings">My Bookings</Link>
       <h2>Services</h2>
       <ServiceList />
     </>

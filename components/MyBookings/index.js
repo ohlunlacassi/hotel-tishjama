@@ -12,7 +12,7 @@ export default function MyBookingList({ context, user }) {
   if (error) {
     return (
       <>
-        <h2>⭐️ My Bookings</h2>
+        <h2>My Bookings</h2>
         <p>
           Our apologies, but we could not retrieve the list of our services.
         </p>
@@ -24,7 +24,7 @@ export default function MyBookingList({ context, user }) {
   if (!bookedServices || bookedServices.length === 0) {
     return (
       <>
-        <h2>⭐️ My Bookings</h2>
+        <h2>My Bookings</h2>
         <p>
           You have not yet booked any of our luxury services. To make a booking,
           please go to Services
@@ -33,29 +33,32 @@ export default function MyBookingList({ context, user }) {
     );
   }
   return (
-    <ul>
-      {bookedServices
-        .sort((a, b) => new Date(a.date) - new Date(b.date))
-        .map((service) => (
-          <li key={service._id}>
-            <Link
-              href={
-                context === "SPD" ? `/SPD/${service._id}` : `/${service._id}`
-              }
-            >
-              <Image
-                src={service.image}
-                width={100}
-                height={100}
-                alt={`picture of the ${service.name}`}
-              />
-              {service.name}
-              {new Date(service.date).toISOString().split("T")[0]}
-              {" @ "}
-              {service.time}
-            </Link>
-          </li>
-        ))}
-    </ul>
+    <>
+      <h2>My Bookings</h2>
+      <ul>
+        {bookedServices
+          .sort((a, b) => new Date(a.date) - new Date(b.date))
+          .map((service) => (
+            <li key={service._id}>
+              <Link
+                href={
+                  context === "SPD" ? `/SPD/${service._id}` : `/${service._id}`
+                }
+              >
+                <Image
+                  src={service.image}
+                  width={100}
+                  height={100}
+                  alt={`picture of the ${service.name}`}
+                />
+                {service.name}
+                {new Date(service.date).toISOString().split("T")[0]}
+                {" @ "}
+                {service.time}
+              </Link>
+            </li>
+          ))}
+      </ul>
+    </>
   );
 }

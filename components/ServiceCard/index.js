@@ -1,7 +1,10 @@
 import Image from "next/image";
 import useSWR, { mutate } from "swr";
+import { useRouter } from "next/router";
 
 export default function ServiceCard({ id, user }) {
+  const router = useRouter();
+
   const {
     data: service,
     isLoading,
@@ -9,13 +12,34 @@ export default function ServiceCard({ id, user }) {
   } = useSWR(id ? `/api/services/${id}` : null);
 
   const handleBooking = async () => {
-    await fetch(`/api/users/${user._id}/bookings`, {
-      method: isBooked() ? "DELETE" : "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ service_id: id }),
-    });
-    mutate(`/api/users/${user._id}/bookings`);
-    mutate(`/api/users/${user._id}`);
+    if (isBooked()) {
+      const confirmation = window.confirm(
+        "Are you sure you want to cancel this booking?"
+      );
+      if (confirmation) {
+        await fetch(`/api/users/${user._id}/bookings`, {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ service_id: id }),
+          // message: isBooked() ? "Your booking has been canceled." : null,
+        });
+        mutate(`/api/users/${user._id}/bookings`);
+        mutate(`/api/users/${user._id}`);
+
+        router.push("/MyBookings");
+      }
+    } else {
+      await fetch(`/api/users/${user._id}/bookings`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ service_id: id }),
+        // message: isBooked() ? "Your booking has been canceled." : null,
+      });
+      mutate(`/api/users/${user._id}/bookings`);
+      mutate(`/api/users/${user._id}`);
+
+      router.push("/MyBookings");
+    }
   };
   function isBooked() {
     if (!user) {
@@ -38,7 +62,7 @@ export default function ServiceCard({ id, user }) {
 
   return (
     <>
-      <h2>Service</h2>
+      {isBooked() ? <h2>My Booking</h2> : <h2>Service</h2>}
       <article>
         <Image
           src={service.image}
@@ -57,7 +81,7 @@ export default function ServiceCard({ id, user }) {
           <dd>{service.price} €</dd>
         </dl>
         <button onClick={handleBooking}>
-          {isBooked() ? "Service Booked" : "Book this Service"}
+          {isBooked() ? "Cancel Booking" : "Book this Service"}
         </button>
       </article>
     </>
