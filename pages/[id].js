@@ -10,6 +10,7 @@ export default function ServiceDetailsPage({ user }) {
       <p>Here are the details of the luxury service you selected.</p>
       <ServiceCard id={id} user={user} />
       <Link href="/">← Services</Link>
+      <Link href="/MyBookings">← My Bookings</Link>
     </>
   );
 }

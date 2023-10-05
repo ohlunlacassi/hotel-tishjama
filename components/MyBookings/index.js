@@ -2,7 +2,6 @@ import useSWR from "swr";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import useState from "react";
 
 export default function MyBookingList({ context, user }) {
   const { data: bookedServices, error } = useSWR(
