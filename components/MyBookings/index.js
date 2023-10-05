@@ -4,8 +4,10 @@ import Link from "next/link";
 import React from "react";
 import useState from "react";
 
-export default function MyBookingList({ context }) {
-  const { data: services, error } = useSWR("/api/services");
+export default function MyBookingList({ context, user }) {
+  const { data: bookedServices, error } = useSWR(
+    user ? `/api/users/${user._id}/bookings` : null
+  );
 
   if (error) {
     return (
@@ -18,9 +20,6 @@ export default function MyBookingList({ context }) {
       </>
     );
   }
-
-  const bookedServices = services?.filter((service) => service.isBooked);
-  console.log("test:", bookedServices);
 
   if (!bookedServices || bookedServices.length === 0) {
     return (

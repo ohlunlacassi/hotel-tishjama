@@ -1,27 +1,28 @@
 import Image from "next/image";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 
-export default function ServiceCard({ id }) {
+export default function ServiceCard({ id, user }) {
   const {
     data: service,
-    setService,
     isLoading,
     error,
   } = useSWR(id ? `/api/services/${id}` : null);
 
   const handleBooking = async () => {
-    if (!service.isBooked) {
-      fetch(
-        `/services/${service._id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ isBooked: true }),
-        },
-        setService({ ...service, isBooked: true })
-      );
-    }
+    await fetch(`/api/users/${user._id}/bookings`, {
+      method: isBooked() ? "DELETE" : "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ service_id: id }),
+    });
+    mutate(`/api/users/${user._id}/bookings`);
+    mutate(`/api/users/${user._id}`);
   };
+  function isBooked() {
+    if (!user) {
+      return;
+    }
+    return user.bookings.find((b) => b._id === id);
+  }
 
   if (isLoading || !service) {
     return <h2>Loading...</h2>;
@@ -55,8 +56,8 @@ export default function ServiceCard({ id }) {
           <dt>Price:</dt>
           <dd>{service.price} €</dd>
         </dl>
-        <button onClick={handleBooking} disabled={service.isBooked}>
-          {service.isBooked ? "Service Booked" : "Book this Service"}
+        <button onClick={handleBooking}>
+          {isBooked() ? "Service Booked" : "Book this Service"}
         </button>
       </article>
     </>

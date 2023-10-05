@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { deleteService } from "@/lib/api";
 
-export default function ServiceDetailsPage() {
+export default function ServiceDetailsPage({ user }) {
   const router = useRouter();
   const { id } = router.query;
 
@@ -17,7 +17,7 @@ export default function ServiceDetailsPage() {
 
   return (
     <>
-      <ServiceCard id={id} />
+      <ServiceCard id={id} user={user} />
       <Link href="/SPD">← Services</Link>
       <Link href={`/SPD/services/${id}/edit`}>✏️ Edit</Link>
       <button type="danger" onClick={() => onDelete(id)}>
