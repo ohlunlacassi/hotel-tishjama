@@ -21,7 +21,6 @@ export default function ServiceCard({ id, user }) {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ service_id: id }),
-          // message: isBooked() ? "Your booking has been canceled." : null,
         });
         mutate(`/api/users/${user._id}/bookings`);
         mutate(`/api/users/${user._id}`);
@@ -33,7 +32,6 @@ export default function ServiceCard({ id, user }) {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ service_id: id }),
-        // message: isBooked() ? "Your booking has been canceled." : null,
       });
       mutate(`/api/users/${user._id}/bookings`);
       mutate(`/api/users/${user._id}`);
