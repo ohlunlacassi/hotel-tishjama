@@ -50,7 +50,6 @@ export default function MyBookingList({ context, user }) {
                 alt={`picture of the ${service.name}`}
               />
               {service.name}
-              {service.isBooked ? <span>⭐️</span> : null}
               {new Date(service.date).toISOString().split("T")[0]}
               {" @ "}
               {service.time}
