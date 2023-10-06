@@ -2,7 +2,7 @@ import Image from "next/image";
 import useSWR, { mutate } from "swr";
 import { useRouter } from "next/router";
 
-export default function ServiceCard({ id, user }) {
+export default function ServiceCard({ id, user, isBooked }) {
   const router = useRouter();
 
   const {
@@ -12,7 +12,7 @@ export default function ServiceCard({ id, user }) {
   } = useSWR(id ? `/api/services/${id}` : null);
 
   const handleBooking = async () => {
-    if (isBooked()) {
+    if (isBooked) {
       const confirmation = window.confirm(
         "Are you sure you want to cancel this booking?"
       );
@@ -39,12 +39,12 @@ export default function ServiceCard({ id, user }) {
       router.push("/MyBookings");
     }
   };
-  function isBooked() {
-    if (!user) {
-      return;
-    }
-    return user.bookings.find((b) => b._id === id);
-  }
+  // function isBooked() {
+  //   if (!user) {
+  //     return;
+  //   }
+  //   return user.bookings.find((b) => b._id === id);
+  // }
 
   if (isLoading || !service) {
     return <h2>Loading...</h2>;
@@ -60,7 +60,7 @@ export default function ServiceCard({ id, user }) {
 
   return (
     <>
-      {isBooked() ? <h2>My Booking</h2> : <h2>Service</h2>}
+      {isBooked ? <h2>My Booking</h2> : <h2>Service</h2>}
       <article>
         <Image
           src={service.image}
@@ -79,7 +79,7 @@ export default function ServiceCard({ id, user }) {
           <dd>{service.price} €</dd>
         </dl>
         <button onClick={handleBooking}>
-          {isBooked() ? "Cancel Booking" : "Book this Service"}
+          {isBooked ? "Cancel Booking" : "Book this Service"}
         </button>
       </article>
     </>
