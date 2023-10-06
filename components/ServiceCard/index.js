@@ -39,12 +39,6 @@ export default function ServiceCard({ id, user, isBooked }) {
       router.push("/MyBookings");
     }
   };
-  // function isBooked() {
-  //   if (!user) {
-  //     return;
-  //   }
-  //   return user.bookings.find((b) => b._id === id);
-  // }
 
   if (isLoading || !service) {
     return <h2>Loading...</h2>;
