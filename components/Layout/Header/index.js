@@ -14,6 +14,7 @@ const StyledHeader = styled.h1`
   color: var(--gold);
   padding: 0.5rem;
   font-family: ${croissantOne.style.fontFamily};
+  font-size: 2.5rem;
 `;
 
 export default function Header() {

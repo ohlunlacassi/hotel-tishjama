@@ -1,7 +1,6 @@
 import useSWR from "swr";
 import React from "react";
-import H2 from "../Layout/H2";
-import ActionLink from "../Layout/ActionLink";
+import StyledHeadlineTwo from "../Layout/StyledHeadlineTwo";
 import Paragraph from "../Layout/Paragraph";
 import UnorderedList from "../Layout/UnorderedList";
 import ListItem from "../Layout/ListItem";
@@ -16,7 +15,7 @@ export default function MyBookingList({ context, user }) {
   if (error) {
     return (
       <>
-        <H2>My Bookings</H2>
+        <StyledHeadlineTwo>My Bookings</StyledHeadlineTwo>
         <Paragraph>
           Our apologies, but we could not retrieve the list of our services.
         </Paragraph>
@@ -28,7 +27,7 @@ export default function MyBookingList({ context, user }) {
   if (!bookedServices || bookedServices.length === 0) {
     return (
       <>
-        <H2>My Bookings</H2>
+        <StyledHeadlineTwo>My Bookings</StyledHeadlineTwo>
         <Paragraph>
           You have not yet booked any of our luxury services. To make a booking,
           please go to Services
@@ -38,7 +37,7 @@ export default function MyBookingList({ context, user }) {
   }
   return (
     <>
-      <H2>My Bookings</H2>
+      <StyledHeadlineTwo>My Bookings</StyledHeadlineTwo>
       <UnorderedList>
         {bookedServices
           .sort((a, b) => new Date(a.date) - new Date(b.date))
