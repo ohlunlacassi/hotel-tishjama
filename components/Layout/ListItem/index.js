@@ -5,4 +5,6 @@ export default styled.li`
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
+  background-color: var(--light-green);
+  color: var(--white);
 `;

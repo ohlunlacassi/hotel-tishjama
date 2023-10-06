@@ -26,7 +26,7 @@ export default function EditService() {
       <H2>Edit Service</H2>
       <ServiceForm service={service} onSubmit={onSubmit} />
       <br />
-      <ActionLink href="/SPD">Cancel</ActionLink>
+      <ActionLink href={`/SPD/${id}`}>Cancel</ActionLink>
     </>
   );
 }
