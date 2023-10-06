@@ -8,12 +8,11 @@ export default function HomePage() {
     <>
       <Paragraph>
         Welcome! On this page, you will find a list of Hotel Tishjama&#x27;s
-        bookable, luxury services!
-        <br />
-        Enjoy your stay.
+        bookable, luxury services! Enjoy your stay.
       </Paragraph>
-      <H2>Services</H2>
       <ActionLink href="/SPD">Service Provider Dashboard</ActionLink>
+      <ActionLink href="/MyBookings">My Bookings</ActionLink>
+      <H2>Services</H2>
       <ServiceList />
     </>
   );

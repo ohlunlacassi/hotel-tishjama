@@ -4,7 +4,7 @@ import { deleteService } from "@/lib/api";
 import ActionLink from "@/components/Layout/ActionLink";
 import ActionButton from "@/components/Layout/ActionButton";
 
-export default function ServiceDetailsPage() {
+export default function ServiceDetailsPage({ user }) {
   const router = useRouter();
   const { id } = router.query;
 
@@ -18,8 +18,8 @@ export default function ServiceDetailsPage() {
 
   return (
     <>
-      <ServiceCard id={id} />
-      <br />
+      <ServiceCard id={id} user={user} />
+       <br />
       <ActionLink href="/SPD">← Services</ActionLink>
       <ActionLink href={`/SPD/services/${id}/edit`}>✏️ Edit</ActionLink>
       <ActionButton type="danger" onClick={() => onDelete(id)}>
