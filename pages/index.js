@@ -1,16 +1,18 @@
+import Paragraph from "@/components/Layout/Paragraph";
 import ServiceList from "../components/ServiceList/index";
-import Link from "next/link";
+import H2 from "@/components/Layout/H2";
+import ActionLink from "@/components/Layout/ActionLink";
 
 export default function HomePage() {
   return (
     <>
-      <p>
+      <Paragraph>
         Welcome! On this page, you will find a list of Hotel Tishjama&#x27;s
         bookable, luxury services! Enjoy your stay.
-      </p>
-      <Link href="/SPD">Service Provider Dashboard</Link>
-      <Link href="/MyBookings">My Bookings</Link>
-      <h2>Services</h2>
+      </Paragraph>
+      <ActionLink href="/SPD">Service Provider Dashboard</ActionLink>
+      <ActionLink href="/MyBookings">My Bookings</ActionLink>
+      <H2>Services</H2>
       <ServiceList />
     </>
   );

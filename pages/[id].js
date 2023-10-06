@@ -1,6 +1,7 @@
 import ServiceCard from "@/components/ServiceCard";
 import { useRouter } from "next/router";
-import Link from "next/link";
+import Paragraph from "@/components/Layout/Paragraph";
+import ActionLink from "@/components/Layout/ActionLink";
 
 export default function ServiceDetailsPage({ user }) {
   const router = useRouter();
@@ -9,21 +10,16 @@ export default function ServiceDetailsPage({ user }) {
   const isBooked = user
     ? user.bookings.find((booking) => booking._id === id)
     : null;
-  // function isBooked() {
-  //   if (!user) {
-  //     return;
-  //   }
-  //   return user.bookings.find((booking) => booking._id === id);
-  // }
+  
   return (
     <>
-      <p>Here are the details of the luxury service you selected.</p>
+      <Paragraph>Here are the details of the luxury service you selected.</Paragraph>
       <ServiceCard id={id} user={user} isBooked={isBooked} />
-
+      <br />
       {isBooked ? (
-        <Link href="/MyBookings">← My Bookings</Link>
+        <ActionLink href="/MyBookings">← My Bookings</ActionLink>
       ) : (
-        <Link href="/">← Services</Link>
+        <ActionLink href="/">← Services</ActionLink>
       )}
     </>
   );

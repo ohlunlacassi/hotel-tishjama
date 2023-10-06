@@ -1,7 +1,8 @@
 import ServiceCard from "@/components/ServiceCard";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { deleteService } from "@/lib/api";
+import ActionLink from "@/components/Layout/ActionLink";
+import ActionButton from "@/components/Layout/ActionButton";
 
 export default function ServiceDetailsPage({ user }) {
   const router = useRouter();
@@ -18,11 +19,12 @@ export default function ServiceDetailsPage({ user }) {
   return (
     <>
       <ServiceCard id={id} user={user} />
-      <Link href="/SPD">← Services</Link>
-      <Link href={`/SPD/services/${id}/edit`}>✏️ Edit</Link>
-      <button type="danger" onClick={() => onDelete(id)}>
+       <br />
+      <ActionLink href="/SPD">← Services</ActionLink>
+      <ActionLink href={`/SPD/services/${id}/edit`}>✏️ Edit</ActionLink>
+      <ActionButton type="danger" onClick={() => onDelete(id)}>
         ❌ delete
-      </button>
+      </ActionButton>
     </>
   );
 }

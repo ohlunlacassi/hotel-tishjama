@@ -1,10 +1,12 @@
-import Image from "next/image";
-import useSWR, { mutate } from "swr";
+import StyledImage from "../Layout/StyledImage";
+import useSWR, {mutate} from "swr";
+import H2 from "../Layout/H2";
+import StyledCard from "../Layout/StyledCard";
+import Flex from "../Layout/Flex";
 import { useRouter } from "next/router";
 
 export default function ServiceCard({ id, user, isBooked }) {
   const router = useRouter();
-
   const {
     data: service,
     isLoading,
@@ -41,41 +43,41 @@ export default function ServiceCard({ id, user, isBooked }) {
   };
 
   if (isLoading || !service) {
-    return <h2>Loading...</h2>;
+    return <H2>Loading...</H2>;
   }
 
   if (error) {
     return (
-      <h2>
+      <H2>
         There was an error fetching the service details. Please try again.
-      </h2>
+      </H2>
     );
   }
 
   return (
     <>
-      {isBooked ? <h2>My Booking</h2> : <h2>Service</h2>}
-      <article>
-        <Image
-          src={service.image}
-          width={100}
-          height={100}
-          alt={`picture of the ${service.name}`}
-        />
-        <h3>{service.name}</h3>
+      {isBooked ? <H2>My Booking</H2> : <H2>Service</H2>}
+      <StyledCard>
+        <Flex>
+          <StyledImage
+            src={service.image}
+            width={100}
+            height={100}
+            alt={`picture of the ${service.name}`}
+          />
+          <h3>{service.name}</h3>
+        </Flex>
+
         <p>{service.description}</p>
-        <dl>
-          <dt>Date:</dt>
-          <dd>{service.date}</dd>
-          <dt>Time:</dt>
-          <dd>{service.time}</dd>
-          <dt>Price:</dt>
-          <dd>{service.price} €</dd>
-        </dl>
-        <button onClick={handleBooking}>
+        <ul>
+          <li>Date: {new Date(service.date).toISOString().split("T")[0]}</li>
+          <li>Time: {service.time}</li>
+          <li>Price: {service.price} EUR</li>
+        </ul>
+      </StyledCard>
+      <button onClick={handleBooking}>
           {isBooked ? "Cancel Booking" : "Book this Service"}
         </button>
-      </article>
     </>
   );
 }
