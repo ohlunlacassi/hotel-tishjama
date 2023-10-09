@@ -13,23 +13,25 @@ export default function useUser() {
     fetcher
   );
 
-  async function login({ email, password }) {
+  async function login({ email, roomNumber }) {
     const response = await fetch("/api/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, roomNumber }),
     });
 
     if (!response.ok) {
-      alert("Wrong credentials!");
+      alert("Incorrect Credentials");
       return;
     }
 
     const json = await response.json();
     setUserID(json.id);
-    router.push("/");
+    email === "service-manager@hotel-tishjama.com"
+      ? router.push("../SPD")
+      : router.push("/");
   }
 
   function logout() {

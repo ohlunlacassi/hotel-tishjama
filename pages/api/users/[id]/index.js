@@ -5,7 +5,6 @@ export default async function handler(request, response) {
     const user = await User.findById(request.query.id)
       .populate("bookings")
       .exec();
-    console.log("USER: ", user);
     if (!user) {
       response.status(404).json({ message: "User Not Found" });
       return;
