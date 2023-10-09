@@ -13,7 +13,7 @@ const StyledHeader = styled.h1`
   background-color: var(--dark-green);
   color: var(--gold);
   padding: 0.5rem;
-  font-family: ${croissantOne.style.fontFamily};
+  font-family: ${croissantOne.style.fontFamily}, sans-serif;
   font-size: 2.5rem;
 `;
 

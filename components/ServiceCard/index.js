@@ -59,11 +59,9 @@ export default function ServiceCard({ id, user, isBooked }) {
 
   return (
     <>
-      {isBooked ? (
-        <StyledHeadlineTwo>My Booking</StyledHeadlineTwo>
-      ) : (
-        <StyledHeadlineTwo>Service</StyledHeadlineTwo>
-      )}
+      <StyledHeadlineTwo>
+        {isBooked ? "My Booking" : "Service"}
+      </StyledHeadlineTwo>
       <StyledCard>
         <Flex>
           <StyledImage

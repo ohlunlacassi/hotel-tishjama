@@ -24,9 +24,7 @@ export default function ServiceDetailsPage({ user }) {
       <Flex style={{ justifyContent: "space-between" }}>
         <ActionLink href="/SPD">← Services</ActionLink>
         <ActionLink href={`/SPD/services/${id}/edit`}>✏️ Edit</ActionLink>
-        <ActionButton type="danger" onClick={() => onDelete(id)}>
-          ❌ delete
-        </ActionButton>
+        <ActionButton onClick={() => onDelete(id)}>❌ delete</ActionButton>
       </Flex>
     </>
   );
