@@ -1,11 +1,11 @@
 import ServiceList from "../../components/ServiceList/index";
-import H2 from "@/components/Layout/H2";
+import StyledHeadlineTwo from "@/components/Layout/StyledHeadlineTwo";
 import ActionLink from "@/components/Layout/ActionLink";
 
 export default function SPDHomePage() {
   return (
     <>
-      <H2>Services</H2>
+      <StyledHeadlineTwo>Services</StyledHeadlineTwo>
       <ActionLink href="/SPD/services/create">+ add service</ActionLink>
       <ActionLink href="../">User Dashboard</ActionLink>
       <ServiceList context="SPD" />

@@ -1,6 +1,6 @@
 import Paragraph from "@/components/Layout/Paragraph";
 import ServiceList from "../components/ServiceList/index";
-import H2 from "@/components/Layout/H2";
+import StyledHeadlineTwo from "@/components/Layout/StyledHeadlineTwo";
 import ActionLink from "@/components/Layout/ActionLink";
 
 export default function HomePage() {
@@ -12,7 +12,7 @@ export default function HomePage() {
       </Paragraph>
       <ActionLink href="/SPD">Service Provider Dashboard</ActionLink>
       <ActionLink href="/MyBookings">My Bookings</ActionLink>
-      <H2>Services</H2>
+      <StyledHeadlineTwo>Services</StyledHeadlineTwo>
       <ServiceList />
     </>
   );

@@ -1,9 +1,12 @@
 import StyledImage from "../Layout/StyledImage";
-import useSWR, {mutate} from "swr";
-import H2 from "../Layout/H2";
+import useSWR, { mutate } from "swr";
+import StyledHeadlineTwo from "../Layout/StyledHeadlineTwo";
 import StyledCard from "../Layout/StyledCard";
 import Flex from "../Layout/Flex";
 import { useRouter } from "next/router";
+import Paragraph from "../Layout/Paragraph";
+import UnorderedList from "../Layout/UnorderedList";
+import ActionButton from "../Layout/ActionButton";
 
 export default function ServiceCard({ id, user, isBooked }) {
   const router = useRouter();
@@ -43,20 +46,22 @@ export default function ServiceCard({ id, user, isBooked }) {
   };
 
   if (isLoading || !service) {
-    return <H2>Loading...</H2>;
+    return <StyledHeadlineTwo>Loading...</StyledHeadlineTwo>;
   }
 
   if (error) {
     return (
-      <H2>
+      <StyledHeadlineTwo>
         There was an error fetching the service details. Please try again.
-      </H2>
+      </StyledHeadlineTwo>
     );
   }
 
   return (
     <>
-      {isBooked ? <H2>My Booking</H2> : <H2>Service</H2>}
+      <StyledHeadlineTwo>
+        {isBooked ? "My Booking" : "Service"}
+      </StyledHeadlineTwo>
       <StyledCard>
         <Flex>
           <StyledImage
@@ -68,16 +73,16 @@ export default function ServiceCard({ id, user, isBooked }) {
           <h3>{service.name}</h3>
         </Flex>
 
-        <p>{service.description}</p>
-        <ul>
+        <Paragraph>{service.description}</Paragraph>
+        <UnorderedList>
           <li>Date: {new Date(service.date).toISOString().split("T")[0]}</li>
           <li>Time: {service.time}</li>
           <li>Price: {service.price} EUR</li>
-        </ul>
-      </StyledCard>
-      <button onClick={handleBooking}>
+        </UnorderedList>
+        <ActionButton onClick={handleBooking}>
           {isBooked ? "Cancel Booking" : "Book this Service"}
-        </button>
+        </ActionButton>
+      </StyledCard>
     </>
   );
 }

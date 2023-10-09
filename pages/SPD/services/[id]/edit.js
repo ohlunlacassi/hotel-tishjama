@@ -2,7 +2,7 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import { editService } from "@/lib/api";
 import ServiceForm from "@/components/ServiceForm";
-import H2 from "@/components/Layout/H2";
+import StyledHeadlineTwo from "@/components/Layout/StyledHeadlineTwo";
 import ActionLink from "@/components/Layout/ActionLink";
 
 export default function EditService() {
@@ -23,10 +23,10 @@ export default function EditService() {
 
   return (
     <>
-      <H2>Edit Service</H2>
+      <StyledHeadlineTwo>Edit Service</StyledHeadlineTwo>
       <ServiceForm service={service} onSubmit={onSubmit} />
       <br />
-      <ActionLink href="/SPD">Cancel</ActionLink>
+      <ActionLink href={`/SPD/${id}`}>Cancel</ActionLink>
     </>
   );
 }
