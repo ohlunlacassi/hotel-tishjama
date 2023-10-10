@@ -4,6 +4,9 @@ import StyledHeadlineTwo from "../Layout/StyledHeadlineTwo";
 import StyledCard from "../Layout/StyledCard";
 import Flex from "../Layout/Flex";
 import { useRouter } from "next/router";
+import Paragraph from "../Layout/Paragraph";
+import UnorderedList from "../Layout/UnorderedList";
+import ActionButton from "../Layout/ActionButton";
 
 export default function ServiceCard({ id, user, isBooked }) {
   const router = useRouter();
@@ -56,11 +59,9 @@ export default function ServiceCard({ id, user, isBooked }) {
 
   return (
     <>
-      {isBooked ? (
-        <StyledHeadlineTwo>My Booking</StyledHeadlineTwo>
-      ) : (
-        <StyledHeadlineTwo>Service</StyledHeadlineTwo>
-      )}
+      <StyledHeadlineTwo>
+        {isBooked ? "My Booking" : "Service"}
+      </StyledHeadlineTwo>
       <StyledCard>
         <Flex>
           <StyledImage
@@ -72,16 +73,16 @@ export default function ServiceCard({ id, user, isBooked }) {
           <h3>{service.name}</h3>
         </Flex>
 
-        <p>{service.description}</p>
-        <ul>
+        <Paragraph>{service.description}</Paragraph>
+        <UnorderedList>
           <li>Date: {new Date(service.date).toISOString().split("T")[0]}</li>
           <li>Time: {service.time}</li>
           <li>Price: {service.price} EUR</li>
-        </ul>
+        </UnorderedList>
+        <ActionButton onClick={handleBooking}>
+          {isBooked ? "Cancel Booking" : "Book this Service"}
+        </ActionButton>
       </StyledCard>
-      <button onClick={handleBooking}>
-        {isBooked ? "Cancel Booking" : "Book this Service"}
-      </button>
     </>
   );
 }
