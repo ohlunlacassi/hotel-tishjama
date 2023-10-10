@@ -27,10 +27,10 @@ export default function useUser() {
       return;
     }
 
-    const json = await response.json();
-    setUserID(json._id);
+    const loggedInUser = await response.json();
+    setUserID(loggedInUser._id);
     email === "service-manager@hotel-tishjama.com"
-      ? router.push("../SPD")
+      ? router.push("/SPD")
       : router.push("/");
   }
 

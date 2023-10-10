@@ -17,13 +17,13 @@ export default function LoginPage() {
     <>
       <StyledHeadlineTwo>Log In</StyledHeadlineTwo>
       <form onSubmit={onSubmit}>
-        <label htmlFor="email">
+        <label>
           Email Address:
-          <input id="email" name="email" type="email" required />
+          <input name="email" type="email" required />
         </label>
-        <label htmlFor="roomNumber">
+        <label>
           Room Number:
-          <input id="roomNumber" name="roomNumber" type="number" required />
+          <input name="roomNumber" type="number" required />
         </label>
         <ActionButton>Log In</ActionButton>
       </form>
