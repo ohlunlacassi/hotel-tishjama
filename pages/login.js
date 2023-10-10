@@ -1,5 +1,5 @@
 import useUser from "@/hooks/useUser";
-import H2 from "@/components/Layout/H2";
+import StyledHeadlineTwo from "@/components/Layout/StyledHeadlineTwo";
 import ActionLink from "@/components/Layout/ActionLink";
 import ActionButton from "@/components/Layout/ActionButton";
 
@@ -15,7 +15,7 @@ export default function LoginPage() {
   }
   return (
     <>
-      <H2>Log In</H2>
+      <StyledHeadlineTwo>Log In</StyledHeadlineTwo>
       <form onSubmit={onSubmit}>
         <label htmlFor="email">
           Email Address:

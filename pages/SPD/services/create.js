@@ -1,7 +1,7 @@
 import ServiceForm from "@/components/ServiceForm";
 import { useRouter } from "next/router";
 import { addService } from "@/lib/api";
-import H2 from "@/components/Layout/H2";
+import StyledHeadlineTwo from "@/components/Layout/StyledHeadlineTwo";
 import ActionLink from "@/components/Layout/ActionLink";
 
 export default function AddServicePage() {
@@ -14,7 +14,7 @@ export default function AddServicePage() {
 
   return (
     <>
-      <H2>Add Service</H2>
+      <StyledHeadlineTwo>Add Service</StyledHeadlineTwo>
       <ServiceForm onSubmit={onSubmit} />
       <br />
       <ActionLink href="/SPD">Cancel</ActionLink>

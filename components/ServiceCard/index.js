@@ -1,6 +1,6 @@
 import StyledImage from "../Layout/StyledImage";
-import useSWR, {mutate} from "swr";
-import H2 from "../Layout/H2";
+import useSWR, { mutate } from "swr";
+import StyledHeadlineTwo from "../Layout/StyledHeadlineTwo";
 import StyledCard from "../Layout/StyledCard";
 import Flex from "../Layout/Flex";
 import { useRouter } from "next/router";
@@ -43,20 +43,24 @@ export default function ServiceCard({ id, user, isBooked }) {
   };
 
   if (isLoading || !service) {
-    return <H2>Loading...</H2>;
+    return <StyledHeadlineTwo>Loading...</StyledHeadlineTwo>;
   }
 
   if (error) {
     return (
-      <H2>
+      <StyledHeadlineTwo>
         There was an error fetching the service details. Please try again.
-      </H2>
+      </StyledHeadlineTwo>
     );
   }
 
   return (
     <>
-      {isBooked ? <H2>My Booking</H2> : <H2>Service</H2>}
+      {isBooked ? (
+        <StyledHeadlineTwo>My Booking</StyledHeadlineTwo>
+      ) : (
+        <StyledHeadlineTwo>Service</StyledHeadlineTwo>
+      )}
       <StyledCard>
         <Flex>
           <StyledImage
@@ -76,8 +80,8 @@ export default function ServiceCard({ id, user, isBooked }) {
         </ul>
       </StyledCard>
       <button onClick={handleBooking}>
-          {isBooked ? "Cancel Booking" : "Book this Service"}
-        </button>
+        {isBooked ? "Cancel Booking" : "Book this Service"}
+      </button>
     </>
   );
 }

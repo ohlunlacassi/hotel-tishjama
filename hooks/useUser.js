@@ -28,7 +28,7 @@ export default function useUser() {
     }
 
     const json = await response.json();
-    setUserID(json.id);
+    setUserID(json._id);
     email === "service-manager@hotel-tishjama.com"
       ? router.push("../SPD")
       : router.push("/");

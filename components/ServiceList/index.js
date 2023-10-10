@@ -2,7 +2,7 @@ import useSWR from "swr";
 import StyledLink from "../Layout/StyledLink";
 import React from "react";
 import Paragraph from "../Layout/Paragraph";
-import H2 from "../Layout/H2";
+import StyledHeadlineTwo from "../Layout/StyledHeadlineTwo";
 import UnorderedList from "../Layout/UnorderedList";
 import ListItem from "../Layout/ListItem";
 import TextSpan from "../Layout/TextSpan";
@@ -12,7 +12,7 @@ export default function ServiceList({ context }) {
   const { data: services, isLoading, error } = useSWR("/api/services");
 
   if (isLoading) {
-    return <H2>Loading...</H2>;
+    return <StyledHeadlineTwo>Loading...</StyledHeadlineTwo>;
   }
 
   if (error) {
@@ -27,7 +27,7 @@ export default function ServiceList({ context }) {
   if (services.length === 0) {
     return (
       <>
-        <H2>Services</H2>
+        <StyledHeadlineTwo>Services</StyledHeadlineTwo>
         <Paragraph>There are currently no services available.</Paragraph>
         <Paragraph>Please add a service!</Paragraph>
       </>
