@@ -14,7 +14,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ["dummyimage.com", "images.unsplash.com"],
+    domains: ["res.cloudinary.com", "dummyimage.com", "images.unsplash.com"],
   },
 };
 

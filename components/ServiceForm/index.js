@@ -12,9 +12,9 @@ function formatDate(date) {
 export default function ServiceForm({ onSubmit, service = {} }) {
   function handleSubmit(event) {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-    onSubmit(data);
+    const file = event.target.image.files[0];
+    const data = Object.fromEntries(new FormData(event.target));
+    onSubmit(data, file);
   }
 
   return (
@@ -32,12 +32,7 @@ export default function ServiceForm({ onSubmit, service = {} }) {
 
       <FormItem>
         <label htmlFor="image">Image: </label>
-        <input
-          id="image"
-          name="image"
-          type="text"
-          defaultValue={service.image}
-        />
+        <input id="image" name="image" type="file" />
       </FormItem>
 
       <FormItem>
