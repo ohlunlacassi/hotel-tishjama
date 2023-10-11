@@ -1,6 +1,7 @@
 import ActionButton from "../Layout/ActionButton";
 import FormContainer from "../Layout/Form/FormContainer";
 import FormItem from "../Layout/Form/FormItem";
+import StyledImage from "../Layout/StyledImage";
 
 function formatDate(date) {
   if (date) {
@@ -32,8 +33,15 @@ export default function ServiceForm({ onSubmit, service = {} }) {
 
       <FormItem>
         <label htmlFor="image">Image: </label>
-        <input id="image" name="image" type="file" />
+        <input id="image " name="image" type="file" />
       </FormItem>
+
+      <StyledImage
+        src={service.image?.url}
+        width={100}
+        height={100}
+        alt={`picture of the ${service.name}`}
+      />
 
       <FormItem>
         <label htmlFor="description">Description: </label>
