@@ -2,6 +2,7 @@ import ActionButton from "../Layout/ActionButton";
 import FormContainer from "../Layout/Form/FormContainer";
 import FormItem from "../Layout/Form/FormItem";
 import StyledImage from "../Layout/StyledImage";
+import { uploadImage } from "@/lib/api";
 
 function formatDate(date) {
   if (date) {
@@ -11,11 +12,22 @@ function formatDate(date) {
 }
 
 export default function ServiceForm({ onSubmit, service = {} }) {
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    const file = event.target.image.files[0];
-    const data = Object.fromEntries(new FormData(event.target));
-    onSubmit(data, file);
+    try {
+      const image = await uploadImage(event.target.image.files[0]);
+      console.log("IMAGE: ", image);
+      const data = Object.fromEntries(new FormData(event.target));
+      console.log("DATA: ", data);
+      if (!data.image.name) {
+        onSubmit(data);
+      } else {
+        onSubmit(data, image);
+      }
+    } catch (error) {
+      console.log("ERROR: ", error);
+      alert("Error editing post");
+    }
   }
 
   return (
@@ -33,15 +45,20 @@ export default function ServiceForm({ onSubmit, service = {} }) {
 
       <FormItem>
         <label htmlFor="image">Image: </label>
-        <input id="image " name="image" type="file" />
+        {service.image && service.image.url && (
+          <StyledImage
+            src={
+              service.image
+                ? service.image?.url
+                : "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Groupofzombiesjoelf.jpg/220px-Groupofzombiesjoelf.jpg"
+            }
+            width={100}
+            height={100}
+            alt={`picture of the ${service.name}`}
+          />
+        )}
+        <input id="image" name="image" type="file" />
       </FormItem>
-
-      <StyledImage
-        src={service.image?.url}
-        width={100}
-        height={100}
-        alt={`picture of the ${service.name}`}
-      />
 
       <FormItem>
         <label htmlFor="description">Description: </label>
