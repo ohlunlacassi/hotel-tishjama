@@ -3,6 +3,8 @@ import ServiceList from "../components/ServiceList/index";
 import StyledHeadlineTwo from "@/components/Layout/StyledHeadlineTwo";
 import ActionLink from "@/components/Layout/ActionLink";
 import useUser from "@/hooks/useUser";
+import StyledLogin from "@/components/Layout/StyledLogin";
+import ActionButton from "@/components/Layout/ActionButton";
 
 export default function HomePage({ user }) {
   const { logout } = useUser();
@@ -14,16 +16,16 @@ export default function HomePage({ user }) {
         bookable, luxury services! Enjoy your stay.
       </Paragraph>
       {user ? (
-        <p>
+        <StyledLogin>
           <ActionLink href="./MyBookings">My Bookings</ActionLink>Welcome,{" "}
           {user.firstName} {user.lastName}!{" "}
-          <button onClick={logout}>Log Out</button>
-        </p>
+          <ActionButton onClick={logout}>Log Out</ActionButton>
+        </StyledLogin>
       ) : (
-        <p>
+        <StyledLogin>
           To use our services, please log in.{" "}
           <ActionLink href="/login">Log In</ActionLink>
-        </p>
+        </StyledLogin>
       )}
       <StyledHeadlineTwo>Services</StyledHeadlineTwo>
       <ServiceList />
