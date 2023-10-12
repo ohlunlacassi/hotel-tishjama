@@ -81,6 +81,7 @@ export default function ServiceForm({ onSubmit, service = {} }) {
       <label htmlFor="price">
         Price:{" "}
         <StyledInput
+          size="9"
           id="price"
           name="price"
           type="number"
