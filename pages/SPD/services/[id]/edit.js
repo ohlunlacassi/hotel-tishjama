@@ -19,7 +19,6 @@ export default function EditService() {
       await editService(id, { ...data, image });
       router.push(`/SPD/${id}`);
     } catch (error) {
-      console.log(error);
       alert("Error editing service");
     }
   }

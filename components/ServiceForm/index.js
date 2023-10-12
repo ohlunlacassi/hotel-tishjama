@@ -16,17 +16,14 @@ export default function ServiceForm({ onSubmit, service = {} }) {
     event.preventDefault();
     try {
       const image = await uploadImage(event.target.image.files[0]);
-      console.log("IMAGE: ", image);
       const data = Object.fromEntries(new FormData(event.target));
-      console.log("DATA: ", data);
       if (!data.image.name) {
         onSubmit(data, service.image);
       } else {
         onSubmit(data, image);
       }
     } catch (error) {
-      console.log("ERROR: ", error);
-      alert("Error editing post");
+      alert("Error editing service");
     }
   }
 

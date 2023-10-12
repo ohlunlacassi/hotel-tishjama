@@ -4,7 +4,6 @@ import { addService } from "@/lib/api";
 import StyledHeadlineTwo from "@/components/Layout/StyledHeadlineTwo";
 import ActionLink from "@/components/Layout/ActionLink";
 import { mutate } from "swr";
-import { uploadImage } from "@/lib/api";
 
 export default function AddServicePage() {
   const router = useRouter();
@@ -15,7 +14,6 @@ export default function AddServicePage() {
       mutate("/api/services");
       router.push("/SPD");
     } catch (error) {
-      console.log(error);
       alert("Error creating service");
     }
   }
