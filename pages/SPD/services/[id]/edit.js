@@ -8,13 +8,19 @@ import ActionLink from "@/components/Layout/ActionLink";
 export default function EditService() {
   const router = useRouter();
   const { id } = router.query;
-  const { data: service, isLoading } = useSWR(
-    id ? `/api/services/${id}` : null
-  );
+  const {
+    data: service,
+    isLoading,
+    mutate,
+  } = useSWR(id ? `/api/services/${id}` : null);
 
-  async function onSubmit(data) {
-    await editService(id, data);
-    router.push(`/SPD/${id}`);
+  async function onSubmit(data, image) {
+    try {
+      await editService(id, { ...data, image });
+      router.push(`/SPD/${id}`);
+    } catch (error) {
+      alert("Error editing service");
+    }
   }
 
   if (!service || isLoading) {

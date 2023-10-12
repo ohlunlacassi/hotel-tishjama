@@ -42,7 +42,7 @@ export default function ServiceList({ context }) {
           >
             <TextSpan>
               <StyledImage
-                src={service.image}
+                src={service.image?.url}
                 width={100}
                 height={100}
                 alt={`picture of the ${service.name}`}
