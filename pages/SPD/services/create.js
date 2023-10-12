@@ -16,7 +16,7 @@ export default function AddServicePage() {
       router.push("/SPD");
     } catch (error) {
       console.log(error);
-      alert("Error creating post");
+      alert("Error creating service");
     }
   }
 

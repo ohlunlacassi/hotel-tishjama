@@ -20,7 +20,7 @@ export default function EditService() {
       router.push(`/SPD/${id}`);
     } catch (error) {
       console.log(error);
-      alert("Error editing post");
+      alert("Error editing service");
     }
   }
 
