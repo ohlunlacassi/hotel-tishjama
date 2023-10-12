@@ -20,7 +20,7 @@ export default function ServiceForm({ onSubmit, service = {} }) {
       const data = Object.fromEntries(new FormData(event.target));
       console.log("DATA: ", data);
       if (!data.image.name) {
-        onSubmit(data);
+        onSubmit(data, service.image);
       } else {
         onSubmit(data, image);
       }

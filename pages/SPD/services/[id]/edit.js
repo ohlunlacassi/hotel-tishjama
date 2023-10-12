@@ -17,8 +17,6 @@ export default function EditService() {
   async function onSubmit(data, image) {
     try {
       await editService(id, { ...data, image });
-      mutate();
-      mutate("/api/services");
       router.push(`/SPD/${id}`);
     } catch (error) {
       console.log(error);

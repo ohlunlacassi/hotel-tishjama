@@ -9,9 +9,8 @@ import { uploadImage } from "@/lib/api";
 export default function AddServicePage() {
   const router = useRouter();
 
-  async function onSubmit(data, file) {
+  async function onSubmit(data, image) {
     try {
-      const image = await uploadImage(file);
       await addService({ ...data, image });
       mutate("/api/services");
       router.push("/SPD");
