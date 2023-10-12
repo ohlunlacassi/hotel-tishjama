@@ -24,7 +24,7 @@ export default function LoginPage() {
         </label>
         <label>
           Room Number:&nbsp;
-          <input name="roomNumber" type="number" required />
+          <input size="10" name="roomNumber" type="number" required />
         </label>
         <ActionButton>Log In</ActionButton>
       </FormContainer>

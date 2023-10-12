@@ -72,16 +72,19 @@ export default function ServiceCard({ id, user, isBooked }) {
           />
           <h3>{service.name}</h3>
         </Flex>
-
         <Paragraph>{service.description}</Paragraph>
         <UnorderedList>
           <li>Date: {new Date(service.date).toISOString().split("T")[0]}</li>
           <li>Time: {service.time}</li>
           <li>Price: {service.price} EUR</li>
         </UnorderedList>
-        <ActionButton onClick={handleBooking}>
-          {isBooked ? "Cancel Booking" : "Book this Service"}
-        </ActionButton>
+        {user.email !== "service-manager@hotel-tishjama.com" ? (
+          <ActionButton onClick={handleBooking}>
+            {isBooked ? "Cancel Booking" : "Book this Service"}
+          </ActionButton>
+        ) : (
+          <p>You must be logged in to book this service!</p>
+        )}
       </StyledCard>
     </>
   );

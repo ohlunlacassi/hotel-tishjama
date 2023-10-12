@@ -23,8 +23,8 @@ export default function HomePage({ user }) {
         </StyledLogin>
       ) : (
         <StyledLogin>
-          To use our services, please log in.{" "}
-          <ActionLink href="/login">Log In</ActionLink>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To use our services, please
+          log in. <ActionLink href="/login">Log In</ActionLink>
         </StyledLogin>
       )}
       <StyledHeadlineTwo>Services</StyledHeadlineTwo>
