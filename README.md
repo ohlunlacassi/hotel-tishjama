@@ -2,7 +2,7 @@
 
 ## The Hotel Tishjama App offers both service managers and guests ease and convenience when it comes to effortlessly booking, creating, or editing services offered by the hotel.
 
-![HotelTishjama_screenshot1](/images/HotelTishjama_screenshot1.png)
+![HotelTishjama_screenshot1](/images/HotelTishjama_screenshot1.png) ![HotelTishjama_screenshot2](/images/HotelTishjama_screenshot2.png)
 
 ### Description
 
