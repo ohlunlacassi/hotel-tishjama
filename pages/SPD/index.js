@@ -11,7 +11,7 @@ export default function SPDHomePage() {
   return (
     <>
       <StyledLogin>
-        <ActionLink href="/SPD/services/create">+ add service</ActionLink>
+        <ActionLink href="/SPD/services/create">Add Service</ActionLink>
         Welcome, Service Manager!
         <ActionButton onClick={logout}>Log Out</ActionButton>
       </StyledLogin>
