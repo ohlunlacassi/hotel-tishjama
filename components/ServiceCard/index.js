@@ -65,7 +65,7 @@ export default function ServiceCard({ id, user, isBooked }) {
       <StyledCard>
         <Flex>
           <StyledImage
-            src={service.image}
+            src={service.image?.url}
             width={100}
             height={100}
             alt={`picture of the ${service.name}`}
@@ -74,7 +74,9 @@ export default function ServiceCard({ id, user, isBooked }) {
         </Flex>
         <Paragraph>{service.description}</Paragraph>
         <UnorderedList>
-          <li>Date: {new Date(service.date).toISOString().split("T")[0]}</li>
+          <li>
+            Date: {new Date(service.date || null).toISOString().split("T")[0]}
+          </li>
           <li>Time: {service.time}</li>
           <li>Price: {service.price} EUR</li>
         </UnorderedList>

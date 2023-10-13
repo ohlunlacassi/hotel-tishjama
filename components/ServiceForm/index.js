@@ -2,6 +2,8 @@ import ActionButton from "../Layout/ActionButton";
 import FormContainer from "../Layout/Form/FormContainer";
 import FormItem from "../Layout/Form/FormItem";
 import StyledInput from "../Layout/StyledInput";
+import StyledImage from "../Layout/StyledImage";
+import { uploadImage } from "@/lib/api";
 
 function formatDate(date) {
   if (date) {
@@ -11,11 +13,19 @@ function formatDate(date) {
 }
 
 export default function ServiceForm({ onSubmit, service = {} }) {
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-    onSubmit(data);
+    try {
+      const image = await uploadImage(event.target.image.files[0]);
+      const data = Object.fromEntries(new FormData(event.target));
+      if (!data.image.name) {
+        onSubmit(data, service.image);
+      } else {
+        onSubmit(data, image);
+      }
+    } catch (error) {
+      alert("Error editing service");
+    }
   }
 
   return (
@@ -33,12 +43,19 @@ export default function ServiceForm({ onSubmit, service = {} }) {
 
       <FormItem>
         <label htmlFor="image">Image: </label>
-        <input
-          id="image"
-          name="image"
-          type="text"
-          defaultValue={service.image}
-        />
+        {service.image && service.image.url && (
+          <StyledImage
+            src={
+              service.image
+                ? service.image?.url
+                : "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Groupofzombiesjoelf.jpg/220px-Groupofzombiesjoelf.jpg"
+            }
+            width={100}
+            height={100}
+            alt={`picture of the ${service.name}`}
+          />
+        )}
+        <input id="image" name="image" type="file" />
       </FormItem>
 
       <FormItem>
