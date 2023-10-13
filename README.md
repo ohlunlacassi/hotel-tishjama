@@ -1,37 +1,18 @@
-# New Next Project
+# Hotel Tishjama Service App
 
-This project was created from the neue fische `next` template.
+## The Hotel Tishjama App offers both guests and service managers ease and convenience when it comes to effortlessly booking, creating, or editing services offered by the hotel.
 
-You can [🔗 **use this template on CodeSandbox**](https://codesandbox.io/p/sandbox/github/neuefische/web-exercises/tree/main/templates/next?file=/README.md) or locally by running this command in your Terminal:
+The app has two different dashboards, one for the service manager, and one for guests. The login process is the same for both: The app asks for an email address and a room number (and does not require guests to memorize or write down _yet another_ password).
 
-```bash
-npx -y ghcd@latest neuefische/web-exercises/tree/main/templates/next my-app -i
-```
+Once logged in, the service manager can see the list of services on offer as well as a button which allows for the creation of new services. In the details view of each service, the service manager also has the option to edit or delete the service.
 
-## Development
+Once logged in, guests also see a list of services on offer, can click into service details pages, and, once there, book that service. Booked services appear in a "My Bookings" list accessible from the user's home page. From the "My Bookings" list, guests can again access the service details page and cancel the booking if necessary.
 
-### Local Development
+Login Data (for testing purposes):
 
-To work locally, please install the dependencies using `npm i` first.
-
-Run `npm run dev` to start a development server and open the displayed URL in a browser.
-
-Use `npm run test` to run the tests.
-
-### CodeSandbox Cloud
-
-Select the "Preview: 3000" tab to view this project.
-
-Select the "Tests: logs" tab to view the tests.
-
-> The `npm run dev` and `npm run test` scripts run automatically.
-
-### Scripts
-
-You can use the following commands:
-
-- `npm run dev` to start a development server
-- `npm run build` to build the project
-- `npm run start` to start a production server
-- `npm run test` to run the tests
-- `npm run lint` to run the linter
+- Service Manager
+  - Email Address: `service-manager@hotel-tishjama.com`
+  - Room Number: `666`
+- Guest
+  - Email Address: `guest1@home.com`
+  - Room Number: `101`
