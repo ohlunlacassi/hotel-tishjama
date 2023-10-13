@@ -4,7 +4,7 @@ import StyledHeadlineTwo from "../Layout/StyledHeadlineTwo";
 import StyledCard from "../Layout/StyledCard";
 import Flex from "../Layout/Flex";
 import { useRouter } from "next/router";
-import Paragraph from "../Layout/Paragraph";
+import Paragraph from "../Layout/DescriptionText";
 import UnorderedList from "../Layout/UnorderedList";
 import ActionButton from "../Layout/ActionButton";
 
@@ -72,7 +72,6 @@ export default function ServiceCard({ id, user, isBooked }) {
           />
           <h3>{service.name}</h3>
         </Flex>
-
         <Paragraph>{service.description}</Paragraph>
         <UnorderedList>
           <li>
@@ -81,9 +80,17 @@ export default function ServiceCard({ id, user, isBooked }) {
           <li>Time: {service.time}</li>
           <li>Price: {service.price} EUR</li>
         </UnorderedList>
-        <ActionButton onClick={handleBooking}>
-          {isBooked ? "Cancel Booking" : "Book this Service"}
-        </ActionButton>
+        {user ? (
+          user.email !== "service-manager@hotel-tishjama.com" ? (
+            <ActionButton onClick={handleBooking}>
+              {isBooked ? "Cancel Booking" : "Book this Service"}
+            </ActionButton>
+          ) : (
+            <p>You must be logged in to book this service!</p>
+          )
+        ) : (
+          <p>You must be logged in to book this service!</p>
+        )}
       </StyledCard>
     </>
   );

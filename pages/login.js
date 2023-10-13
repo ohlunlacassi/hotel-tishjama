@@ -2,6 +2,8 @@ import useUser from "@/hooks/useUser";
 import StyledHeadlineTwo from "@/components/Layout/StyledHeadlineTwo";
 import ActionLink from "@/components/Layout/ActionLink";
 import ActionButton from "@/components/Layout/ActionButton";
+import FormContainer from "@/components/Layout/Form/FormContainer";
+import StyledInput from "@/components/Layout/StyledInput";
 
 export default function LoginPage() {
   const { login } = useUser();
@@ -16,17 +18,18 @@ export default function LoginPage() {
   return (
     <>
       <StyledHeadlineTwo>Log In</StyledHeadlineTwo>
-      <form onSubmit={onSubmit}>
+      <FormContainer onSubmit={onSubmit}>
         <label>
-          Email Address:
-          <input name="email" type="email" required />
+          Email Address:&nbsp;
+          <StyledInput name="email" type="email" required />
         </label>
         <label>
-          Room Number:
-          <input name="roomNumber" type="number" required />
+          Room Number:&nbsp;
+          <StyledInput size="10" name="roomNumber" type="number" required />
         </label>
         <ActionButton>Log In</ActionButton>
-      </form>
+      </FormContainer>
+      <br />
       <ActionLink href="/">← Services</ActionLink>
     </>
   );

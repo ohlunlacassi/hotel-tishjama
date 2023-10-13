@@ -1,6 +1,7 @@
 import ActionButton from "../Layout/ActionButton";
 import FormContainer from "../Layout/Form/FormContainer";
 import FormItem from "../Layout/Form/FormItem";
+import StyledInput from "../Layout/StyledInput";
 import StyledImage from "../Layout/StyledImage";
 import { uploadImage } from "@/lib/api";
 
@@ -31,7 +32,7 @@ export default function ServiceForm({ onSubmit, service = {} }) {
     <FormContainer onSubmit={handleSubmit} aria-label="ServiceForm">
       <FormItem>
         <label htmlFor="name">Service Name: </label>
-        <input
+        <StyledInput
           id="name"
           name="name"
           type="text"
@@ -59,30 +60,33 @@ export default function ServiceForm({ onSubmit, service = {} }) {
 
       <FormItem>
         <label htmlFor="description">Description: </label>
-        <textarea
+        <StyledInput
+          as="textarea"
           id="description"
           name="description"
           cols="20"
           rows="4"
           defaultValue={service.description}
           required
-        ></textarea>
+        ></StyledInput>
       </FormItem>
 
-      <label htmlFor="date">
-        Date:{" "}
-        <input
-          id="date"
-          name="date"
-          type="date"
-          defaultValue={formatDate(service.date)}
-          required
-        />
-      </label>
+      <FormItem>
+        <label htmlFor="date">
+          Date:{" "}
+          <StyledInput
+            id="date"
+            name="date"
+            type="date"
+            defaultValue={formatDate(service.date)}
+            required
+          />
+        </label>
+      </FormItem>
 
       <label htmlFor="time">
         Time:{" "}
-        <input
+        <StyledInput
           id="time"
           name="time"
           type="time"
@@ -93,7 +97,8 @@ export default function ServiceForm({ onSubmit, service = {} }) {
 
       <label htmlFor="price">
         Price:{" "}
-        <input
+        <StyledInput
+          size="9"
           id="price"
           name="price"
           type="number"
