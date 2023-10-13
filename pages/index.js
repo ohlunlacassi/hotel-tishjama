@@ -17,8 +17,8 @@ export default function HomePage({ user }) {
       </WelcomeText>
       {user ? (
         <StyledLogin>
-          <ActionLink href="./MyBookings">My Bookings</ActionLink>Welcome,{" "}
-          {user.firstName} {user.lastName}!{" "}
+          <ActionLink href="./MyBookings">My Bookings</ActionLink>Welcome,
+          {user.firstName} {user.lastName}!
           <ActionButton onClick={logout}>Log Out</ActionButton>
         </StyledLogin>
       ) : (
