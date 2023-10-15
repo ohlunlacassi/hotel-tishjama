@@ -18,17 +18,18 @@ Once logged in, guests also see a list of services on offer, can click into serv
   - React
   - Next.js
   - React Styled Components
+  - useSWR
 - Back End:
+  - Node.js
   - MongoDB Atlas
   - Mongoose
-  - useSWR
   - Cloudinary
 
 ### Login Data (for testing purposes):
 
 - Service Manager
   - Email Address: `service-manager@hotel-tishjama.com`
-  - Room Number: `666`
+  - Room Number: `1234`
 - Guest
   - Email Address: `guest1@home.com`
   - Room Number: `101`
