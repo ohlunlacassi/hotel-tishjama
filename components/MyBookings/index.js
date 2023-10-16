@@ -30,7 +30,7 @@ export default function MyBookingList({ context, user }) {
         <StyledHeadlineTwo>My Bookings</StyledHeadlineTwo>
         <Paragraph>
           You have not yet booked any of our luxury services. To make a booking,
-          please go to Services
+          please go to Services.
         </Paragraph>
       </>
     );
